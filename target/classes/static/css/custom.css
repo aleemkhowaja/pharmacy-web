@@ -1,0 +1,189 @@
+/* Write your custom CSS here */
+
+.login-box .logo-name img {
+    width: 100%;
+}
+
+.login-panel {
+       padding: 20px 50px 10px;
+    background: #1B75A1;
+        margin-top: 30px;
+            border-radius: 4px;
+}
+
+.login-panel .log-p {
+    font-size: 15px;
+    color: #fff;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    padding-bottom: 18px;
+}
+
+.login-panel input.form-control {
+    background: #fff;
+    border-radius: 3px;
+    height: 40px;
+    }
+
+.login-panel label {
+    color: #fff;
+    font-size: 14px;
+}
+
+.login-panel .form-group {
+    margin-bottom: 10px;
+}
+
+.login-panel .login-btn {
+    color: #6F6F6F;
+    background-color: #F9F9F9;
+    border-color: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 6px;
+    /* height: 15px; */
+    margin-top: 30px;
+}
+
+.login-panel .log-copy{
+    color: #fff;
+    padding: 7px 0 0;}
+
+.page-login #main-wrapper{
+	margin:2%;
+}
+
+.navbar .logo-box .logo-text{
+	    width: 327px;
+}
+
+.navbar .logo-box .logo-text img{
+	width: 100%;
+}
+
+.navbar-nav.navbar-right{
+	    margin-top: 10px;
+}
+
+
+.menu.accordion-menu {
+    background: #1B75A1;
+    height: 100%;
+}
+
+.compact-menu:not(.small-sidebar) .menu.accordion-menu li a{
+	color: #fff;
+}
+
+.color1{    background: #4B81D2;
+    padding: 15px 10px;}
+.color2{    background: #5BB959;
+    padding: 15px 10px;}
+.color3{    background: #DE5959;
+    padding: 15px 10px;}
+.color4{    background: #843534;
+    padding: 15px 10px;}
+
+.info-box .info-box-stats p{
+	color: #fff;
+}
+
+.info-box .info-box-icon i{
+	color: #fff;
+}
+
+.info-box .info-box-stats span.info-box-title{
+	color: #fff;
+}
+
+.page-footer{
+	    background: #1B75A1;
+}
+
+.txt-white{color: #fff;}
+
+.horizontal-bar .menu>li>ul,.small-sidebar .menu>li>ul{
+    border-left: 1px solid #125373;
+    border-right: 1px solid #125373;
+    border-bottom: 1px solid #125373;
+    background: #125373;}
+
+    .btn-primary {
+    color: #fff;
+    background-color: #1B75A1;
+}
+
+table.table i {
+    font-size: 14px;
+    margin-right: 10px;
+    background: #1B75A1;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+}
+.table>thead>tr>th{
+	    font-size: 14px;
+	    font-weight: 500;
+}
+
+.panel .panel-heading{
+	padding: 0;
+	height: 0;
+}
+
+.panel .panel-heading+.panel-body {
+    padding: 10px;
+}
+
+thead {
+    background: #1B75A1;
+    color: #fff;
+}
+
+.page-title{
+	background: #fff;
+}
+
+.nav>li>a{
+	font-size: 14px;
+}
+
+.stu-scholar .table tbody tr td{
+    padding: 15px!important;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.stu-scholar form.form-horizontal.ajaxForm {
+    border-top: 1px solid #DDDDDD;
+    padding-top: 30px;
+    }
+
+ .stu-scholar .table{
+ 	    margin-bottom: 0;
+ }   
+ 
+ 
+ /* vlidate error message  */
+ 
+ .msgerror {
+	padding: 0px !important;
+    width: 100px !important;
+    float: right;
+    margin: 2px !important;
+    color: red;
+}
+
+
+.tableth-or
+{
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+}
+ 
+ 

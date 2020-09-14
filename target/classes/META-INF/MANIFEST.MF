@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Built-By: alim.khowaja
-Build-Jdk: 9.0.1
+Build-Jdk-Spec: 9
+Implementation-Title: SAMCM_ONLINE
+Implementation-Version: 0.0.1-SNAPSHOT
 Created-By: Maven Integration for Eclipse
 
