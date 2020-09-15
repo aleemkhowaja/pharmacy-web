@@ -43,10 +43,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>, Cr
 	
 	
 	@Query(value = "select distinct empl from Employee empl "
-			+ " left outer join empl.employeeSalaries emplSal"
+			+ " left join empl.employeeSalaries emplSal"
 			+ " where "
 			+ " (:salaryType is null or :salaryType= '' or  UPPER(empl.salaryType) like '%'||UPPER(:salaryType)||'%') and "
-			+ " (:fromDate >= emplSal.fromDate and :toDate <= emplSal.toDate)"
+			+ " emplSal.fromDate is null or (:fromDate >= emplSal.fromDate and :toDate <= emplSal.toDate)"
 			 )
 		List<Employee> filter(@Param("salaryType") String salaryType,
 				      @Param("fromDate") Date fromDate,

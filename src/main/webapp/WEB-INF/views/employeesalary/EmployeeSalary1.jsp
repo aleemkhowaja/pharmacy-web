@@ -1,17 +1,34 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:url var="saveEmployee" value="/employee/save" ></c:url>
+<c:url var="saveDispatchParty" value="/dispatchparty/save" ></c:url>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.datetimepicker').datepicker({
+			dateFormat: 'yy-mm-dd',
+			showButtonPanel: true,
+			changeMonth: true,
+			changeYear: true,
+			buttonImage: "calendar.gif",
+			buttonText: "Calendar",
+			orientation : "bottom right",
+		});
+	});
+</script>
 <script src="<c:url value="/js/employeesalary/employeeSalary.js" />"> </script>
+
+
 <div class="page-title">
 	<div class="container">
 		<div class="adv_ser_row" >
 			<h2>Employee Salaries</h2>
 			<!-- Start Search Fields -->
 			<div class="col-md-8">
-            	<form:form servletRelativeAction="${saveEmployee}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="employeeSalary" id="employeeSalary_form">
+              	<form:form servletRelativeAction="${saveEmployee}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="employeeSalary" id="employeeSalary_form">
 	                
-	                <div class="form-group">
+	               	
+					<div class="form-group">
 	    				<form:label cssClass="control-label" 		path="salaryType"> Salary Type :</form:label>
 	        			
 	        			<form:select 		cssClass="form-control validate-required" path="salaryType" id="employeeSalary_salaryType"  onchange="employeeSalary_returnEmployeeBySalaryType()" >
@@ -23,16 +40,15 @@
 	    			
 	    			<div class="form-group">
 	               		<form:label  path="fromDate" > From Date * </form:label>
-	               		<form:input path="fromDate" cssClass="form-control validate-required datetimepicker" id="employeeSalary_fromDate" placeholder="From Date"/>
+	               		<form:input path="fromDate" cssClass="form-control validate-required datetimepicker" id="employeeSalary_fromDate" placeholder="From Date" onchange="employeeSalary_returnEmployeeBySalaryType()"  />
 	               	</div>
 	               	
 	               	<div class="form-group">
 	               		<form:label  path="toDate" > To Date * </form:label>
-	               		<form:input path="toDate" cssClass="form-control validate-required datetimepicker" id="employeeSalary_toDate" placeholder="To Date"/>
+	               		<form:input path="toDate" cssClass="form-control validate-required datetimepicker" id="employeeSalary_toDate" placeholder="To Date" onchange="employeeSalary_returnEmployeeBySalaryType()" />
 	               	</div>
-	    			
-	    			
-	    			<h3>  Employee Salary Details</h3>
+
+					<h3>  Employee Salary Details</h3>
 							<table border="2" cellspacing="3" class="custom-table"  style="overflow: scroll;text-align: center; width: 100%" id="employeeSalary_dailyEmployeSalaryDtsTbl">
 							<thead>
 				            	<tr> 
@@ -60,27 +76,15 @@
                     <button id="employee-save-btn" type="submit" class="btn" onclick="return employeeSalary_save(event);">Save</button>
                         <!-- Hidden fields -->
                         <form:hidden path="employeeId" id="employee_employeeId" />        
-                   </form:form>
-                </div>
+
+                </form:form>
+			</div>
 		</div>
         <div id="pager"></div>
 	</div>
 </div>
 
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.datetimepicker').datepicker({
-			dateFormat: 'yy-mm-dd',
-			showButtonPanel: true,
-			changeMonth: true,
-			changeYear: true,
-			buttonImage: "calendar.gif",
-			buttonText: "Calendar",
-			orientation : "bottom right",
-		});
-	});
-</script>
 
 <style>
 	.ui-datepicker-month

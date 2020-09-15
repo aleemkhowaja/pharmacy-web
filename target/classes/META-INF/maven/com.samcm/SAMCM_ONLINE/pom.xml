@@ -14,9 +14,6 @@
 	<name>SAMCM_ONLINE</name>
 	<description>Sindhu and Moomal Coal Mining Company</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 
 	<dependencies>
 		<dependency>

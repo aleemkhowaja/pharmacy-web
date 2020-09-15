@@ -28,6 +28,10 @@
  				{
 					requestEmployeeSalaryDTO["employeeId"] = $("#"+$(this).attr('id')).val();
  				}
+				else if($(this).attr('id').match("^employeeSalaryId_"))
+ 				{
+					requestEmployeeSalaryDTO["employeeSalaryId"] = $("#"+$(this).attr('id')).val();
+ 				}
 				else if($(this).attr('id').match("^totalDays_"))
 				{
 					requestEmployeeSalaryDTO["days"] = $("#"+$(this).attr('id')).val();
@@ -188,7 +192,7 @@
 			var tr = "<tr> ";
 			tr += " <td> "+(i+1)+"  </td>"
 			tr += " <td> <input type='hidden' value="+employeeSalaryDtls[i].employeeId+" id='employeeId_"+i+"'/>" +
-					"   <input type='hidden' value="+employeeSalaryDtls[i].employeeSalaryId+" id='employeeSalaryId_"+i+"'/>" "+employeeSalaryDtls[i].employeeName+" </td>"
+					"   <input type='hidden' value="+employeeSalaryDtls[i].responseEmployeeSalaryDTO.employeeSalaryId+" id='employeeSalaryId_"+i+"'/>"+employeeSalaryDtls[i].employeeName+" </td>"
 			tr += " <td> "+employeeSalaryDtls[i].fatherName+" </td>"
 			tr += " <td> "+employeeSalaryDtls[i].designation+" </td>"
 			tr += " <td> "+(employeeSalaryDtls[i].salary == null ? 0 : employeeSalaryDtls[i].salary) +" </td>"
@@ -211,7 +215,6 @@
 			tr += " <td> <input type='text' onchange ='employeeSalary_calculateDailyWagesNetAmount(this);'  id='utilities_"+i+"' style='width:50px' value='"+(employeeSalaryDtls[i].responseEmployeeSalaryDTO.utilities == null ? 0 : employeeSalaryDtls[i].responseEmployeeSalaryDTO.utilities)+"' /> </td>"
 			tr += " <td> "+(employeeSalaryDtls[i].responseEmployeeSalaryDTO.netAmount == null ? 0 : employeeSalaryDtls[i].responseEmployeeSalaryDTO.netAmount)+" </td>"
 			tr += " </tr>";
-			
 			tableData+= tr;
 		}
 	    $("#employeeSalary_dailyEmployeSalaryDtsTbl").append(tableData);

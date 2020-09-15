@@ -14,5 +14,15 @@ public class NumberUtil
 	    return 0;
         return num;
     }
+    
+    /**
+     * check if number is null 
+     * @param num
+     * @return
+     */
+    public static boolean isNullNumber(Integer num)
+    {
+	return num == null ? true : false;
+    }
 
 }
