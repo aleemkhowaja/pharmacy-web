@@ -9,6 +9,7 @@
     <c:url var="returnDispatchPartyDetailsPage" value="/dispatchpartydetails.htm" ></c:url>
     <c:url var="returnDispatchPartyLedgerPage" value="/dispatchpartyledger.htm" ></c:url>
     <c:url var="returnEmployeeSalaryPage" value="/employeesalary.htm" ></c:url>
+    <c:url var="returnBalanceSheetPage" value="/balancesheet.htm" ></c:url>
 
     
     <c:url var="logout" value="/logout" ></c:url>
@@ -78,6 +79,9 @@
 		            
 		            <h4>Company Ledger</h4>
 		            <li class="droplink "><a href="#" onclick="returnPage('${returnEmployeeSalaryPage}',event);"  ><span class="menu-icon fa fa-building"></span><p>Employee Salary</p><span class="arrow"></span></a>
+		            
+		            <li class="droplink "><a href="#" onclick="returnPage('${returnBalanceSheetPage}',event);"  ><span class="menu-icon fa fa-building"></span><p>Balance Sheet</p><span class="arrow"></span></a>
+		            
 		            </li>
 		     	</ul>
 	        <%-- </c:if> --%>

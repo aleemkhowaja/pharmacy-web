@@ -37,12 +37,12 @@ public interface DispatchPartyDetailsRepository extends JpaRepository<DispatchPa
 			+ " join dispd.dispatchParty disp "
 			+ "where"
 			+ "(:dispatchPartyDetailsId is null or dispd.dispatchPartyDetailsId=(:dispatchPartyDetailsId) )")
-	DispatchPartyDetails findbyDispatchPartyDetailsId(Integer dispatchPartyDetailsId);
+	DispatchPartyDetails findbyDispatchPartyDetailsId(@Param("dispatchPartyDetailsId") Integer dispatchPartyDetailsId);
 	
 	@Query("select distinct disp from DispatchParty disp "
 			+ " where"
 			+ " (:dispatchPartyId is null or disp.dispatchPartyId=(:dispatchPartyId) )")
-	DispatchParty findDetailsByDispatchId(Integer dispatchPartyId);
+	DispatchParty findDetailsByDispatchId(@Param("dispatchPartyId") Integer dispatchPartyId);
 	
 	@Query("select distinct dispd from DispatchPartyDetails dispd "
 			+ " join dispd.dispatchParty disp ")

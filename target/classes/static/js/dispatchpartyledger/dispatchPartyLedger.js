@@ -190,7 +190,7 @@ function dispatchPartyLedger_showDispatchPartyDetails(data)
 	 * @param data
 	 * @returns
 	 */
-	$("#dispatchpartyledger_paidAmount").val(paidAmount);
+	$("#dispatchpartyledger_paidAmount").val(data.paidAmount);
 	$("#dispatchpartyledger_amount").val(totalAmount);
 }
 

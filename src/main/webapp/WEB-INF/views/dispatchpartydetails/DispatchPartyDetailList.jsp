@@ -7,18 +7,14 @@
 <c:url var="returnAllDispatchPartyDetailsForGrid" value="/dispatchpartydetails/findAll">
 	<c:param name = "dispatchPartyId" value = "${param.dispatchPartyId}"/>
 </c:url>
- 
-<!-------------------- crud urls  ---------------------------->
-<%-- <c:url var="returnAllDispatchPartyDetailsForGrid" value="/dispatchpartydetails/findAll">
-</c:url> --%>
-<!-- ------------------------------------------------------ -->
-<%-- <jsp:include page="../common/header.jsp" /> --%>
+
 <script src="<c:url value="/js/dispatchpartydetails/dispatchPartyDetails.js" />"> </script>
 <body class="page-header-fixed compact-menu page-horizontal-bar">
-	<%-- <jsp:include page="../common/menues.jsp" /> --%>
 		<div class="page-title">
-			<div class="container">
-				<div class="adv_ser_row">
+		<div class="container">
+			<div class="adv_ser_row">
+			
+	<%-- <jsp:include page="../common/menues.jsp" /> --%>
 					<h2>Dispatch Party Details</h2>
 					<!-- Start Search Fields -->
 					
@@ -42,7 +38,6 @@
 								</div>
 							</div>
 						</form:form>
-					</div>
 				</div>
 
 				<table id="dispatchpartydetails-detail-grid-list">

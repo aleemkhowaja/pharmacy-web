@@ -3,9 +3,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url var="saveDispatchParty" value="/dispatchparty/save" ></c:url>
 
-<div class="page-title">
-	<div class="container">
-		<div class="adv_ser_row" >
 			<h2>Add Dispatch Party Ledger</h2>
 			<!-- Start Search Fields -->
 			<div class="col-md-8">
@@ -178,10 +175,7 @@
                      
                 </form:form>
 			</div>
-		</div>
         <div id="pager"></div>
-	</div>
-</div>
 
 <script type="text/javascript">
 	$(document).ready(function(){

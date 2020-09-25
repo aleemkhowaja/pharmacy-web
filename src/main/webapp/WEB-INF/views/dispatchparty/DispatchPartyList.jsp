@@ -4,38 +4,40 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-------------------- crud urls  ---------------------------->
-<c:url var="returnAllDispatchPartyForGrid" value="/dispatchparty/findAll"></c:url>
+<c:url var="returnAllDispatchPartyForGrid"
+	value="/dispatchparty/findAll"></c:url>
 <!-- ------------------------------------------------------ -->
 <%-- <jsp:include page="../common/header.jsp" /> --%>
 <script src="<c:url value="/js/dispatchparty/dispatchParty.js" />"> </script>
 <body class="page-header-fixed compact-menu page-horizontal-bar">
 	<%-- <jsp:include page="../common/menues.jsp" /> --%>
-		<div class="page-title">
-			<div class="container">
-				<div class="adv_ser_row">
-					<h2>Dispatch Party</h2>
-					<!-- Start Search Fields -->
-					<span> <input class="smallinput" type="text"
-						name="dispatchParty" id="dispatchParty" placeholder="Dispatch Party" />
-						<input type="button" value="Search" id="search-dispatchparty-button" />
-					</span>
-				</div>
-
-				<table id="dispatchparty-detail-grid-list">
-					<tr>
-						<td />
-					</tr>
-				</table>
-				<div id="pager"></div>
+	<div class="page-title">
+		<div class="container">
+			<div class="adv_ser_row">
+				<h2>Dispatch Party</h2>
+				<!-- Start Search Fields -->
+				<span> <input class="smallinput" type="text"
+					name="dispatchParty" id="dispatchParty"
+					placeholder="Dispatch Party" /> <input type="button"
+					value="Search" id="search-dispatchparty-button" />
+				</span>
 			</div>
+
+			<table id="dispatchparty-detail-grid-list">
+				<tr>
+					<td />
+				</tr>
+			</table>
+			<div id="pager"></div>
 		</div>
-		<div id="main-wrapper" class="container">
-			<div id="dispatchparty-detail-grid-list" class="grid-container"></div>
-			<div style="clear: both;"></div>
+	</div>
+	<div id="main-wrapper" class="container">
+		<div id="dispatchparty-detail-grid-list" class="grid-container"></div>
+		<div style="clear: both;"></div>
 
-			<jsp:include page="DispatchPartyDetail.jsp" />
+		<jsp:include page="DispatchPartyDetail.jsp" />
 
-			<script type="text/javascript">
+		<script type="text/javascript">
 				$(document).ready(function(){
 					var token = $("meta[name='_csrf']").attr("content");
 					var header = $("meta[name='_csrf_header']").attr("content");
@@ -104,8 +106,8 @@
 				    });
 				  });
 				</script>
-		</div>
-		<!-- Row -->
+	</div>
+	<!-- Row -->
 	<!-- Main Wrapper -->
 	<div class="page-footer">
 		<jsp:include page="../common/footer.jsp" />

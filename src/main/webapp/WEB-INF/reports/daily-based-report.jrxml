@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daily-based-report" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4cd9890a-8460-4c85-8a7a-94b2717ab0e5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="month" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="year" class="java.lang.Integer"/>
+	<parameter name="salaryType" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT e.`employee_name` AS "Name",e.`father_name` AS 'Father Name',
+e.`designation` AS 'Designation'
+,e.`salary`/es.`days` AS 'Per Day',es.`days` AS 'P Day',
+e.`salary` AS 'Amount',e.`overtime_amount` AS 'Over Time',es.`ot_days` AS 'OT'
+,es.`ot_days`*e.`overtime_amount` AS 'OT Amount',es.public_holidays AS "Public Holiday",
+e.public_holiday_amount/es.public_holidays AS "Per Day",e.public_holiday_amount AS "Total",
+e.salary+e.public_holiday_amount AS "Gross Amount",es.advance_salary AS "Advance",
+es.utilities AS "Utility",e.salary+e.public_holiday_amount-es.advance_salary-es.utilities AS "Net Amount"
+ FROM employee e
+INNER JOIN `employee_salary` es ON es.`employee_id`=e.`employee_id`
+WHERE MONTH(es.date)=$P{month} AND YEAR(es.date)=$P{year} AND e.salary_type=$P{salaryType};]]>
+	</queryString>
+	<field name="Name" class="java.lang.String"/>
+	<field name="Father Name" class="java.lang.String"/>
+	<field name="Designation" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Per Day" class="java.math.BigDecimal"/>
+	<field name="P Day" class="java.lang.Integer"/>
+	<field name="Amount" class="java.lang.Integer"/>
+	<field name="Over Time" class="java.lang.Integer"/>
+	<field name="OT" class="java.lang.Integer"/>
+	<field name="OT Amount" class="java.lang.Long"/>
+	<field name="Public Holiday" class="java.lang.Integer"/>
+	<field name="Total" class="java.lang.Integer"/>
+	<field name="Gross Amount" class="java.lang.Long"/>
+	<field name="Advance" class="java.lang.Integer"/>
+	<field name="Utility" class="java.lang.Integer"/>
+	<field name="Net Amount" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="148" y="26" width="523" height="20" uuid="9e3ddbd2-1732-4b4f-8181-bcb8b0702646"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Daily wages Emloyee Salary for the Month of ["+$P{month} +"-"+ $P{year}+"]"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="53" height="20" uuid="d3ff7473-acfa-4d02-987b-ec1e16e0c97d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="0" width="53" height="20" uuid="527c075b-f432-4ed3-8d30-b54eb99a5da9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Father Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="0" width="53" height="20" uuid="72352942-e62b-4707-b282-04c22671fe46"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="0" width="53" height="20" uuid="dbbbfcbb-4a80-4c04-9f2e-cf57746b0a85"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Per Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="53" height="20" uuid="8232f065-a515-44d2-b53b-8d455227ef1c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="0" width="53" height="20" uuid="cdcd89b1-9eaf-4ad4-9a06-8a573d3a1313"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="53" height="20" uuid="5ff5af6d-82d7-441e-a2f1-8d7fa495eef4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Over Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="53" height="20" uuid="53abdc89-1382-43de-82a8-27c4ad4aaa13"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="53" height="20" uuid="a608e294-802a-4a74-a2f9-8bda9b8c3644"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="0" width="53" height="20" uuid="c822c3a4-745b-46d2-a131-6d49f7d60f71"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Public Holiday]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="0" width="53" height="20" uuid="95ad0447-fcc4-47e6-a5cd-6237198f1f16"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="0" width="53" height="20" uuid="5f04ecf6-aca8-43a4-b520-aafcd4e13258"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="636" y="0" width="53" height="20" uuid="a727d9b6-c6fc-4739-98d3-c8dad86a7e2a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="689" y="0" width="53" height="20" uuid="06708c44-7cb0-4a81-81ea-023c2a7119ef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Utility]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="742" y="0" width="53" height="20" uuid="36eb051e-3e95-4879-b25d-e86135e01aab"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="53" height="20" uuid="26882383-e71a-4349-b104-244fa5fcf026"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Name}!=null ? $F{Name} :"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="0" width="53" height="20" uuid="c0c84a2f-3510-4e5f-a04a-3094ee29e88a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Father Name}!=null ?$F{Father Name}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="53" height="20" uuid="421a6729-5194-4d89-9e98-5d428c0dcd0e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Designation}!=null ?$F{Designation}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="0" width="53" height="20" uuid="1c407ef4-9998-4c1c-af5e-817cc4efbc29"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Per Day}!=null ?$F{Per Day}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="53" height="20" uuid="b2ea445e-a2c8-48e6-a77b-1e3d4d86fb4e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{P Day}!=null ? $F{P Day}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="53" height="20" uuid="a7f142d8-1c3e-4c86-8721-a99e40b27ddb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Amount}!=null ?$F{Amount}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="53" height="20" uuid="2671ee7f-b12e-4905-b151-517f71414d8f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Over Time}!=null ? $F{Over Time}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="0" width="53" height="20" uuid="b746f657-89d8-4872-a578-a56116c534d8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{OT}!=null ? $F{OT}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="53" height="20" uuid="65dd3e64-8449-4436-94e8-9b9bfd793bc1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{OT Amount}!=null ?$F{OT Amount}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="53" height="20" uuid="53c95cab-4c72-448a-992a-90c7dcb62096"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Public Holiday}!=null ?$F{Public Holiday}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="53" height="20" uuid="536cf7fe-31e5-4413-a0c7-e6a60b80b555"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Total}!=null?$F{Total}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="0" width="53" height="20" uuid="4a4f1c68-2f8a-4732-87ef-6f573f459433"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Gross Amount}!=null ?$F{Gross Amount}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="636" y="0" width="53" height="20" uuid="5a31bef8-f13e-48df-baa1-88f721aaaf8b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Advance}!=null ?$F{Advance}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="0" width="53" height="20" uuid="3961ba1d-6c2a-4f33-b32c-fb9e80cc4eee"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Utility}!=null ? $F{Utility}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="742" y="0" width="53" height="20" uuid="39900158-a657-4634-acaa-607887862b42"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Net Amount}!=null ?$F{Net Amount}:"-"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

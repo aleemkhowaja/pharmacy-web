@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sindhu-coal-mine-report" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86bec31e-f679-4e92-b917-807957be7334">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT e.`employee_name` AS "Name",e.`father_name` AS 'Father Name',
+e.`designation` AS 'Designation',es.`days` AS 'Total Days',e.`salary` AS 'Gross Salary'
+,e.`salary`/es.`days` AS 'Per Day',es.`days` AS 'Pre Day',
+e.`salary` AS 'Salary',e.`overtime_amount` AS 'Over Time',es.`ot_days` AS 'OT'
+,es.`ot_days`*e.`overtime_amount` AS 'OT Amount',
+e.`salary` AS 'Total Salary',es.`advance_salary` AS 'Advance Salary',
+es.`utilities` AS 'Utilities',e.`salary`-es.`utilities` AS 'Net Amount'
+ FROM employee e
+INNER JOIN `employee_salary` es ON es.`employee_id`=e.`employee_id`;]]>
+	</queryString>
+	<field name="Name" class="java.lang.String"/>
+	<field name="Father Name" class="java.lang.String"/>
+	<field name="Designation" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total Days" class="java.lang.Integer"/>
+	<field name="Gross Salary" class="java.lang.Integer"/>
+	<field name="Per Day" class="java.math.BigDecimal"/>
+	<field name="Pre Day" class="java.lang.Integer"/>
+	<field name="Salary" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Over Time" class="java.lang.Integer"/>
+	<field name="OT" class="java.lang.Integer"/>
+	<field name="OT Amount" class="java.lang.Long"/>
+	<field name="Total Salary" class="java.lang.Integer"/>
+	<field name="Advance Salary" class="java.lang.Integer"/>
+	<field name="Utilities" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Net Amount" class="java.lang.Long"/>
+	<variable name="s.no" class="java.lang.Integer" calculation="Count">
+		<initialValueExpression><![CDATA[2]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="283" y="0" width="267" height="36" uuid="d08ce15e-f89b-4498-8ba5-3ab0360eb130"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sindhu Coal Mine]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="0" width="50" height="20" uuid="2708f0c1-12eb-4817-9199-ee65d7e8068c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="50" height="20" uuid="36f02109-2dd7-47e7-938d-4b1561dc1fa3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Father Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="50" height="20" uuid="c3a6deb5-4dcc-4f06-8c27-78c5f9195e98"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="50" height="20" uuid="3ce2af19-3620-4480-a956-e224f091936b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Days]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="50" height="20" uuid="a075697e-cfd4-4ee1-82cb-11b3e5779a61"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="50" height="20" uuid="70edbb30-9b3c-4dba-821d-84d1f142709f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Per Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="50" height="20" uuid="deed6446-e6fe-40b2-bb31-d8cfd7edf671"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pre Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="50" height="20" uuid="fcf26670-9cda-4d27-a9b9-0ef2f47661ce"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="50" height="20" uuid="dea53a6c-e7ce-4240-9b00-0d59b3e90858"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Over Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="20" uuid="68d7b250-521e-46c0-8802-6f34d1fce556"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="0" width="50" height="20" uuid="b9ea88ee-cdf2-4034-bfa9-7b5ba2c7a737"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="50" height="20" uuid="30b7b7ef-6100-46cf-a64c-1250a1c4e59c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="0" width="50" height="20" uuid="2f956b04-e901-4191-b05d-12a1dd47cbb2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="50" height="20" uuid="888b734a-7cf6-45db-86ec-4673fe6aa449"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Utilities]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="750" y="0" width="50" height="20" uuid="ae2608e6-1895-475c-9e1e-5389cdc1cbbe"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="20" uuid="664752e7-bab7-45d0-8c1e-c4bf6178b231"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S.No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="0" width="50" height="20" uuid="87446723-53d8-4301-990d-6989a383d83d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Name}!=null ? $F{Name}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="50" height="20" uuid="34d169b6-a03e-4356-a8d1-82795b3d9e21"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Father Name}!=null ? $F{Father Name}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="50" height="20" uuid="2047391b-0cd5-4b74-ad20-35a7516f60a4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Designation}!=null ? $F{Designation}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="50" height="20" uuid="4c4fb8b2-b609-4424-af4b-69bef4ea1d8e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Total Days}!=null ? $F{Total Days}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="50" height="20" uuid="7a5b30c9-4a9f-4398-8fd7-c0aca90531c3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Gross Salary}!=null ? $F{Gross Salary}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="50" height="20" uuid="1a3e5e16-1d22-4fbb-bad5-ab44870a46ef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Per Day}!=null ? $F{Per Day}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="50" height="20" uuid="2ce45408-584d-404f-b4ce-fc028570feb4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Pre Day}!=null ? $F{Pre Day}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="50" height="20" uuid="e742485f-66b4-4b66-a55a-9f3f3997dc48"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Salary}!=null ? $F{Salary}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="50" height="20" uuid="3477041f-7820-4eda-ad76-9d7e029c6985"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Over Time}!=null ? $F{Over Time}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="50" height="20" uuid="d1c5267d-1147-4f65-a734-9fc255194066"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{OT}!=null ? $F{OT}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="0" width="50" height="20" uuid="210b713a-c5a8-42a0-aa70-b5bfb8d45712"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{OT Amount}!=null ? $F{OT Amount}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="50" height="20" uuid="5cab6fcf-b109-4c5c-83b8-246a03eddff0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Total Salary}!=null ? $F{Total Salary}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="0" width="50" height="20" uuid="42d765f2-222e-41cb-9265-2551a53a4731"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Advance Salary}!=null ? $F{Advance Salary}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="50" height="20" uuid="8918c905-4d9c-4d10-b69d-e6568674e552"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Utilities}!=null ?$F{Utilities}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="750" y="0" width="50" height="20" uuid="6b718bb9-02ac-4199-9d9e-a2d0b7fd842d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{Net Amount}!=null ? $F{Net Amount}:"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="79e35993-2f8b-42bb-b38e-1f701b49498d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
