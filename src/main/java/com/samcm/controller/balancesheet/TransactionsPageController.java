@@ -13,13 +13,6 @@ import com.samcm.service.interfaces.dispatchpartydetails.DispatchPartyDetailsSer
 public class TransactionsPageController 
 {
 
-	@Autowired
-	private DispatchPartyDetailsService dispatchPartyDetailsService;
-	
-	@Autowired
-	private DispatchPartyService dispatchPartyService; 
-	
-
 	@GetMapping(value = "/balancesheet.htm")
 	public String returnBalanceSheetPage( Model model,
 			HttpServletRequest request) 

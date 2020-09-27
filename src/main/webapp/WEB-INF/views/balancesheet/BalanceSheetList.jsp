@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url var="saveEmployee" value="/employee/save" ></c:url>
-<script src="<c:url value="/js/employeesalary/employeeSalary.js" />"> </script>
+<script src="<c:url value="/js/transactions/transactions.js" />"> </script>
 <body class="page-header-fixed compact-menu page-horizontal-bar">
 <div class="page-title">
 	<div class="container">
@@ -12,14 +12,21 @@
 			<div class="col-md-6">
 				<form:form servletRelativeAction="${saveEmployee}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="balanceSheet" id="balancesheet_form">
 	    			<div class="form-group">
-	               		<form:label  path="fromDate" > From Date * </form:label>
-	               		<form:input path="fromDate" cssClass="form-control validate-required datetimepicker" id="balanceSheet_fromDate" placeholder="From Date"/>
-	               	</div>
+							<form:label path="fromDate"> From Date * </form:label>
+							<form:input path="fromDate"
+								cssClass="form-control validate-required datetimepicker"
+								id="balanceSheet_fromDate" placeholder="From Date"
+								onchange="transactions_returnTransactionsByDates()" />
+						</div>
 	               	
 	               	<div class="form-group">
 	               		<form:label  path="toDate" > To Date * </form:label>
-	               		<form:input path="toDate" cssClass="form-control validate-required datetimepicker" id="balanceSheet_toDate" placeholder="To Date"/>
-	               	</div>
+							<form:input path="toDate"
+								cssClass="form-control validate-required datetimepicker"
+								id="balanceSheet_toDate" placeholder="To Date"
+								onchange="transactions_returnTransactionsByDates()" />
+						</div>
+					
 	            </form:form>
 			</div>
 			<div class="col-md-8" style="width: 100%">

@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.samcm.dto.balancesheet.RequestTransactionsDTO;
 import com.samcm.dto.balancesheet.ResponseTransactionsDTO;
-import com.samcm.dto.employee.ResponseEmployeeDTO;
-import com.samcm.model.Employee;
+import com.samcm.enums.TransactionType;
 import com.samcm.model.Transactions;
 import com.samcm.repository.transactions.TransactionsRepository;
 import com.samcm.service.interfaces.transactions.TransactionsService;
@@ -45,41 +44,59 @@ public class TransactionsServiceimpl implements TransactionsService
     @Override
     public ResponseTransactionsDTO detail(RequestTransactionsDTO requestDTO)
     {
-	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-	ResponseTransactionsDTO responseTransactionsDTO = new ResponseTransactionsDTO();
-	
-	List<ResponseTransactionsDTO> responseTransactionsDTOs = new ArrayList<ResponseTransactionsDTO>();
-	try
-	{
-	    Date fromDate = format.parse(format.format(requestDTO.getFromDate()));
-	    Date toDate = format.parse(format.format(requestDTO.getToDate()));
+		ResponseTransactionsDTO responseTransactionsDTO = new ResponseTransactionsDTO();
 
-	    /**
-	     * return all transaction details
-	     */
-	    List<Transactions> transactions = transactionsRepository.findTransactionsDetail(fromDate, toDate);
-	    
-	    if(transactions == null || transactions.size() < 1) return responseTransactionsDTO;
+		List<ResponseTransactionsDTO> responseTransactionsDTOs = new ArrayList<ResponseTransactionsDTO>();
+		try 
+		{
+			Date fromDate = format.parse(format.format(requestDTO.getFromDate()));
+			Date toDate = format.parse(format.format(requestDTO.getToDate()));
 
-	    for(Transactions trans : transactions)
-	    {
-		responseTransactionsDTOs = new ArrayList<ResponseTransactionsDTO>();
-		ResponseTransactionsDTO dto = new ResponseTransactionsDTO();
-		dto.setDate(trans.getDate());
-		dto.setAmount(trans.getAmount());
-		dto.setDescription(trans.getDescription());
-		responseTransactionsDTOs.add(dto);
-		
-		responseTransactionsDTO.setResponseTransactionsDTOs(responseTransactionsDTOs);
+			/**
+			 * return all transaction details
+			 */
+			List<Transactions> transactions = transactionsRepository.findTransactionsDetail(fromDate, toDate);
 
-	    }
-	}
-	catch(ParseException e)
-	{
-	    e.printStackTrace();
-	}
-	return null;
+			if (transactions == null || transactions.size() < 1)
+				return responseTransactionsDTO;
+
+			Integer totalCreditAmount = 0;
+			Integer totalDebitAmount = 0;
+			Integer closingBalance = 0;
+
+			for (Transactions trans : transactions) {
+				responseTransactionsDTOs = new ArrayList<ResponseTransactionsDTO>();
+				ResponseTransactionsDTO dto = new ResponseTransactionsDTO();
+				dto.setDate(trans.getDate());
+				dto.setAmount(trans.getAmount());
+				dto.setDescription(trans.getDescription());
+				responseTransactionsDTOs.add(dto);
+
+				if (trans.getTransactionType().equals(TransactionType.credit.getValue()))
+					totalCreditAmount += trans.getAmount();
+
+				if (trans.getTransactionType().equals(TransactionType.debit.getValue()))
+					totalDebitAmount += trans.getAmount();
+
+			}
+
+			closingBalance = totalCreditAmount - totalDebitAmount;
+
+			/**
+			 * 
+			 */
+			responseTransactionsDTO.setTotalCreditAmount(totalCreditAmount);
+			responseTransactionsDTO.setTotalDebitAmount(totalDebitAmount);
+			responseTransactionsDTO.setClosingBalance(closingBalance);
+			responseTransactionsDTO.setResponseTransactionsDTOs(responseTransactionsDTOs);
+			
+		} catch (ParseException e) 
+		{
+			e.printStackTrace();
+		}
+		return responseTransactionsDTO;
     }
 
     @Override

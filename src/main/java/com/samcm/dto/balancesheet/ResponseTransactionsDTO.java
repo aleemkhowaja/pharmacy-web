@@ -18,7 +18,7 @@ public class ResponseTransactionsDTO
     private Date date;
     private Integer amount;
     private String description;
-    private Integer totalCreditmount;
+    private Integer totalCreditAmount;
     private Integer totalDebitAmount;
     private Integer closingBalance;
     
@@ -55,14 +55,14 @@ public class ResponseTransactionsDTO
 	this.description = description;
     }
 
-    public Integer getTotalCreditmount()
+    public Integer getTotalCreditAmount()
     {
-	return totalCreditmount;
+	return totalCreditAmount;
     }
 
-    public void setTotalCreditmount(Integer totalCreditmount)
+    public void setTotalCreditAmount(Integer totalCreditAmount)
     {
-	this.totalCreditmount = totalCreditmount;
+	this.totalCreditAmount = totalCreditAmount;
     }
 
     public Integer getTotalDebitAmount()
