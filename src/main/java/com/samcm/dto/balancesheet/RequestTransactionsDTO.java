@@ -13,8 +13,13 @@ import java.util.Date;
  */
 public class RequestTransactionsDTO
 {
-    private Date fromDate;
+    private Date  fromDate;
     private Date toDate;
+    
+    private Integer totalCreditAmount;
+    private Integer totalDebitAmount;
+    private Integer closingBalance;
+    
     public Date getFromDate()
     {
         return fromDate;
@@ -31,6 +36,31 @@ public class RequestTransactionsDTO
     {
         this.toDate = toDate;
     }
+    public Integer getTotalCreditAmount()
+    {
+        return totalCreditAmount;
+    }
+    public void setTotalCreditAmount(Integer totalCreditAmount)
+    {
+        this.totalCreditAmount = totalCreditAmount;
+    }
+    public Integer getTotalDebitAmount()
+    {
+        return totalDebitAmount;
+    }
+    public void setTotalDebitAmount(Integer totalDebitAmount)
+    {
+        this.totalDebitAmount = totalDebitAmount;
+    }
+    public Integer getClosingBalance()
+    {
+        return closingBalance;
+    }
+    public void setClosingBalance(Integer closingBalance)
+    {
+        this.closingBalance = closingBalance;
+    }
+    
     
     
     

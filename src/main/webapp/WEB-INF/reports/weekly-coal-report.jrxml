@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="weekly-coal-report" language="groovy" pageWidth="900" pageHeight="800" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="d756530a-fc44-4b37-a88f-b6327a0fe3b0">
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2020-10-01T20:41:31 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="weekly-coal-report" language="groovy" pageWidth="900" pageHeight="800" whenNoDataType="AllSectionsNoDetail" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="d756530a-fc44-4b37-a88f-b6327a0fe3b0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT dp.`dispatch_party`,dps.`quality`,dps.`tons`,dps.rate,dps.`amount`,dps.`rebate`
-FROM `dispatch_party` dp
-INNER JOIN `dispatch_party_details` dps ON dps.`dispatch_party_id`=dp.`dispatch_party_id`
-WHERE DATE(dps.`date_of`)>=$P{toDate} AND DATE(dps.`date_of`)<=$P{fromDate}
+		<![CDATA[SELECT dp.dispatch_party,dps.quality,dps.tons,dps.rate,dps.amount,dps.rebate
+FROM dispatch_party dp
+INNER JOIN dispatch_party_details dps ON dps.dispatch_party_id=dp.dispatch_party_id
+WHERE DATE(dps.date_of)>= $P{fromDate} AND DATE(dps.date_of)<= $P{toDate}
 ORDER BY dp.`dispatch_party`]]>
 	</queryString>
 	<field name="dispatch_party" class="java.lang.String">
@@ -51,7 +54,7 @@ ORDER BY dp.`dispatch_party`]]>
 			<band height="21">
 				<textField>
 					<reportElement x="0" y="0" width="860" height="20" uuid="a3c1b107-6022-47f0-93ad-b19db91e45f3"/>
-					<box>
+					<box leftPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -61,7 +64,7 @@ ORDER BY dp.`dispatch_party`]]>
 					<textElement>
 						<font size="14" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{dispatch_party}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{dispatch_party} == null ? "" : $F{dispatch_party}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -69,7 +72,7 @@ ORDER BY dp.`dispatch_party`]]>
 			<band height="30">
 				<textField>
 					<reportElement x="222" y="0" width="338" height="30" uuid="0b693a1a-dfcd-4c13-8e68-a0cce219a744"/>
-					<box>
+					<box leftPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -79,11 +82,11 @@ ORDER BY dp.`dispatch_party`]]>
 					<textElement>
 						<font size="14" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{tonTotal}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{tonTotal} == null ? "" : $V{tonTotal} ]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="560" y="0" width="300" height="30" uuid="dd089136-50d8-4567-988b-ce74585d597f"/>
-					<box>
+					<box leftPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -93,7 +96,7 @@ ORDER BY dp.`dispatch_party`]]>
 					<textElement>
 						<font size="12" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{totalAmount} == null ? "" : $V{totalAmount}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="111" height="30" uuid="5611c9c9-08d5-4087-bdf9-bf40f1e6ee5c"/>
@@ -129,28 +132,28 @@ ORDER BY dp.`dispatch_party`]]>
 	<title>
 		<band height="64" splitType="Stretch">
 			<staticText>
-				<reportElement x="328" y="0" width="232" height="28" uuid="45a93437-cba4-44a9-ae9d-f6da0617e497"/>
-				<textElement>
-					<font size="20" isBold="false"/>
+				<reportElement x="0" y="0" width="860" height="28" uuid="45a93437-cba4-44a9-ae9d-f6da0617e497"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Weekly Coal]]></text>
+				<text><![CDATA[Coal Dispatched]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="286" y="28" width="71" height="20" uuid="5448a320-981c-4baf-a9a9-1823128e06ab"/>
+				<reportElement x="340" y="30" width="71" height="20" uuid="5448a320-981c-4baf-a9a9-1823128e06ab"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="383" y="28" width="100" height="20" uuid="17c9b046-03ab-418e-8330-6691f24009d0"/>
+				<reportElement x="500" y="30" width="100" height="20" uuid="17c9b046-03ab-418e-8330-6691f24009d0"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="357" y="28" width="56" height="20" uuid="ff33059d-8f4b-4465-a2b7-f5ff405d2747"/>
+				<reportElement x="430" y="30" width="56" height="20" uuid="ff33059d-8f4b-4465-a2b7-f5ff405d2747"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -281,7 +284,7 @@ ORDER BY dp.`dispatch_party`]]>
 		<band height="21" splitType="Stretch">
 			<textField>
 				<reportElement x="111" y="0" width="111" height="20" uuid="a4e964ae-cb41-4b28-ae81-3c60bc818206"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -291,11 +294,11 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{quality}!=null ? $F{quality}:"-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quality} == null ? "" : $F{quality}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="222" y="0" width="111" height="20" uuid="2801de12-c4f5-410e-9067-1e9db173035f"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -305,11 +308,11 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tons}!=null ? $F{tons}:"-" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tons}==null ? "" : $F{tons}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="333" y="0" width="111" height="20" uuid="c1435647-9b18-4cbf-b5b9-b2ef42b359e0"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -319,11 +322,11 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{rate}!=null ? $F{rate}:"-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rate}==null ? "" :$F{rate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="444" y="0" width="111" height="20" uuid="1cab4505-ba68-4db9-a988-2c687e671182"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -333,18 +336,18 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}!=null ? $F{amount}:"-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{amount}==null ? "" : $F{amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="760" y="1" width="48" height="20" uuid="6d1b31c5-da69-4cc8-93ae-ccb76d7145bf"/>
-				<box>
+				<reportElement x="760" y="0" width="48" height="20" uuid="6d1b31c5-da69-4cc8-93ae-ccb76d7145bf"/>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textFieldExpression><![CDATA[$F{quality}!=null ? $F{quality}: "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quality} == null ? "" : $F{quality}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="111" height="21" uuid="f8b4cfa2-565e-4026-924b-aa45edfcd2ac"/>
@@ -358,18 +361,18 @@ ORDER BY dp.`dispatch_party`]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="808" y="1" width="52" height="20" uuid="43dd681d-ff20-4bad-a80c-55ab32dbaf38"/>
-				<box>
+				<reportElement x="808" y="0" width="52" height="20" uuid="43dd681d-ff20-4bad-a80c-55ab32dbaf38"/>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textFieldExpression><![CDATA[$F{rebate}!=null ? $F{rebate}:("-")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rebate} == null ? "" : $F{rebate}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="555" y="1" width="104" height="20" uuid="af7920e7-02a5-475a-9442-b382369dfff7"/>
+				<reportElement x="555" y="0" width="104" height="20" uuid="af7920e7-02a5-475a-9442-b382369dfff7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -380,7 +383,7 @@ ORDER BY dp.`dispatch_party`]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="660" y="1" width="100" height="20" uuid="1b53a60c-2067-45db-9833-28cbe81f757c"/>
+				<reportElement x="660" y="0" width="100" height="20" uuid="1b53a60c-2067-45db-9833-28cbe81f757c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -410,7 +413,7 @@ ORDER BY dp.`dispatch_party`]]>
 			</staticText>
 			<textField>
 				<reportElement x="560" y="0" width="300" height="20" uuid="d2e3f39a-90a8-4394-b03d-156e76740dce"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -420,11 +423,11 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{grandTotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{grandTotal} == null ? "" : $V{grandTotal}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="222" y="0" width="338" height="20" uuid="1aac74d3-29b2-4ba5-b7e8-ea4dc74c2954"/>
-				<box>
+				<box leftPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -434,7 +437,7 @@ ORDER BY dp.`dispatch_party`]]>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{grandTotalTons}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{grandTotalTons} == null ? "" : $V{grandTotalTons}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

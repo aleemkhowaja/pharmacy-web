@@ -23,6 +23,6 @@ public interface TransactionsRepository extends JpaRepository<Transactions, Inte
 {
 	
     @Query("select trans from Transactions trans "
-    	+ " where  :fromDate >= trans.date and :toDate <= trans.date")
+    	+ " where  trans.date >= :fromDate and trans.date <= :toDate")
     List<Transactions> findTransactionsDetail(@Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
 }

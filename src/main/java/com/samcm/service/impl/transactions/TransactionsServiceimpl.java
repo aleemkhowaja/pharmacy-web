@@ -67,10 +67,10 @@ public class TransactionsServiceimpl implements TransactionsService
 			Integer closingBalance = 0;
 
 			for (Transactions trans : transactions) {
-				responseTransactionsDTOs = new ArrayList<ResponseTransactionsDTO>();
 				ResponseTransactionsDTO dto = new ResponseTransactionsDTO();
-				dto.setDate(trans.getDate());
+				dto.setDate(format.parse(format.format(trans.getDate())));
 				dto.setAmount(trans.getAmount());
+				dto.setTransactionType(trans.getTransactionType());
 				dto.setDescription(trans.getDescription());
 				responseTransactionsDTOs.add(dto);
 

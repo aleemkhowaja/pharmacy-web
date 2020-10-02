@@ -9,8 +9,8 @@
 		<div class="adv_ser_row" >
 			<h2>Balance Sheet</h2>
 			<!-- Start Search Fields -->
+			<form:form servletRelativeAction="${saveEmployee}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="balanceSheet" id="balancesheet_form">
 			<div class="col-md-6">
-				<form:form servletRelativeAction="${saveEmployee}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="balanceSheet" id="balancesheet_form">
 	    			<div class="form-group">
 							<form:label path="fromDate"> From Date * </form:label>
 							<form:input path="fromDate"
@@ -25,9 +25,7 @@
 								cssClass="form-control validate-required datetimepicker"
 								id="balanceSheet_toDate" placeholder="To Date"
 								onchange="transactions_returnTransactionsByDates()" />
-						</div>
-					
-	            </form:form>
+					</div>
 			</div>
 			<div class="col-md-8" style="width: 100%">
             	
@@ -40,18 +38,35 @@
 				               		<th class="verticalTableHeader">S.No</th>
 				           			<th class="verticalTableHeader">Date</th>
 				           			<th class="verticalTableHeader">Amount</th>
+				           			<th class="verticalTableHeader">Transaction Type</th>
 				           			<th class="verticalTableHeader">Description</th>
-				           			<th class="verticalTableHeader">Total Credit Amount</th>
-				           			<th class="verticalTableHeader">Total Debit Amount</th>
-				           			<th class="verticalTableHeader">Closing Balance</th>
 				               	</tr>
 			               	</thead>
 		               	</table>
 		               	<br />
 		               	
-		               	
-                    <button id="balanceSheet-save-btn" type="submit" class="btn" onclick="return balanceSheet_save(event);">Save</button>
+		               	<div class="form-group">
+	               		<form:label  path="totalCreditAmount" > Total Credit Amount </form:label>
+							<form:input path="totalCreditAmount"
+								cssClass="form-control" readonly="true"
+								id="balanceSheet_totalCreditAmount" />
+					</div>
+					
+					<div class="form-group">
+	               		<form:label  path="totalDebitAmount" > Total Debit Amount </form:label>
+							<form:input path="totalDebitAmount"
+								cssClass="form-control" readonly="true"
+								id="balanceSheet_totalDebitAmount" />
+					</div>
+					
+					<div class="form-group">
+	               		<form:label  path="closingBalance" > Closing Balance </form:label>
+							<form:input path="closingBalance"
+								cssClass="form-control" readonly="true"
+								id="balanceSheet_closingBalance" />
+					</div>
                 </div>
+              </form:form>
 		</div>
         <div id="pager"></div>
 	</div>

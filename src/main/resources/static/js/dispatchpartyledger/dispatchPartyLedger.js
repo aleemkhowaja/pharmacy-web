@@ -180,8 +180,8 @@ function dispatchPartyLedger_showDispatchPartyDetails(data)
 	}
 	
 	tableData += " <tr> <td> <b> Total 		</b>  	</td> 	<td colspan='4'>  	</td>  	<td id='dispatchpartyledger_detailTotalAmount'> "+	totalAmount	+" 	</td> 	</tr>"
-	tableData += " <tr> <td> <b> Paid  		</b>  	</td> 	<td colspan='4'>   	</td>  	<td id='dispatchpartyledger_detailPaidAmount'>  "+	data.paidAmount	+" 	</td> 	</tr>"
-	tableData += " <tr> <td> <b> Remaining 	</b> 	</td> 	<td colspan='4'>   	</td>  	<td id='dispatchpartyledger_detailPaidAmount'>  "+	data.remainingAmount	+" 	</td> 	</tr>"
+	tableData += " <tr> <td> <b> Paid  		</b>  	</td> 	<td colspan='4'>   	</td>  	<td id='dispatchpartyledger_detailPaidAmount'>  "+(data.paidAmount == null ? 0 : data.paidAmount)+" 	</td> 	</tr>"
+	tableData += " <tr> <td> <b> Remaining 	</b> 	</td> 	<td colspan='4'>   	</td>  	<td id='dispatchpartyledger_detailPaidAmount'>  "+(data.remainingAmount == null ? 0 : data.remainingAmount)+" 	</td> 	</tr>"
 	
     $("#dispatchpartyledger_dispatchPartyDetailsTbl").append(tableData);
 	
@@ -190,7 +190,7 @@ function dispatchPartyLedger_showDispatchPartyDetails(data)
 	 * @param data
 	 * @returns
 	 */
-	$("#dispatchpartyledger_paidAmount").val(data.paidAmount);
+	$("#dispatchpartyledger_paidAmount").val((data.paidAmount == null ? 0 : data.paidAmount));
 	$("#dispatchpartyledger_amount").val(totalAmount);
 }
 

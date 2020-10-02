@@ -42,7 +42,7 @@
 	function transactions_createBalanceSheetTable(data)
 	{
 		$("#balanceSheet_balancesheetDtsTbl > tbody").empty();
-		var transactions = data;
+		var transactions = data.responseTransactionsDTOs;
 		var tableData = "";
 		
 		/**
@@ -59,12 +59,16 @@
 			tr += " <td> "+(i+1)+"  </td>"
 			tr += " <td> "+transactions[i].date+" </td>"
 			tr += " <td> "+transactions[i].amount+" </td>"
+			tr += " <td> "+transactions[i].transactionType+" </td>"
 			tr += " <td> "+transactions[i].description+" </td>"
-			tr += " <td> "+(transactions[i].totalCreditAmount == null ? 0 : transactions[i].totalCreditAmount)+" </td>"
-			tr += " <td> "+(transactions[i].totalDebitAmount == null ? 0 : transactions[i].totalDebitAmount) +" </td>"
-			tr += " <td> "+(transactions[i].closingBalance == null ? 0 : transactions[i].closingBalance)+" </td>"
 			tr += " </tr>";
 			tableData+= tr;
 		}
 	    $("#balanceSheet_balancesheetDtsTbl").append(tableData);
+	    
+	    $("#balanceSheet_totalCreditAmount").val((data.totalCreditAmount == null ? 0 : data.totalCreditAmount))
+	    $("#balanceSheet_totalDebitAmount").val((data.totalDebitAmount == null ? 0 : data.totalDebitAmount))
+	    $("#balanceSheet_closingBalance").val((data.closingBalance == null ? 0 : data.closingBalance))
+	    
+	    
 	}

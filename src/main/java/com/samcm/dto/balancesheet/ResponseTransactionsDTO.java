@@ -18,6 +18,7 @@ public class ResponseTransactionsDTO
     private Date date;
     private Integer amount;
     private String description;
+    private String transactionType;
     private Integer totalCreditAmount;
     private Integer totalDebitAmount;
     private Integer closingBalance;
@@ -48,6 +49,16 @@ public class ResponseTransactionsDTO
     public String getDescription()
     {
 	return description;
+    }
+    
+    public String getTransactionType()
+    {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType)
+    {
+        this.transactionType = transactionType;
     }
 
     public void setDescription(String description)

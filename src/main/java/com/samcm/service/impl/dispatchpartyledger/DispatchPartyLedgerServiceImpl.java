@@ -193,6 +193,7 @@ public class DispatchPartyLedgerServiceImpl implements DispatchPartyLedgerServic
 	    responseDispatchPartyLedgerDTO
 		    .setRemainingAmount(ledger.getRemaining() == null ? 0 : ledger.getRemaining());
 	}
+	
 	return responseDispatchPartyLedgerDTO;
     }
 
