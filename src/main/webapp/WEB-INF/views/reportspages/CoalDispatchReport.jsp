@@ -1,13 +1,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:url var="saveDispatchParty" value="/dispatchparty/save" ></c:url>
+<c:url var="downloadCoalDispatchReport" value="/coaldispatchreport/report/coaldispatchreport.htm" ></c:url>
 
 
 			<h2>Coal Dispatch Details Report</h2>
 			<!-- Start Search Fields -->
 			<div class="col-md-8">
-            	<form:form servletRelativeAction="${saveDispatchParty}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="coaldispatchedreport" id="coaldispatchedreport_form">
+            	<form:form servletRelativeAction="${downloadCoalDispatchReport}" cssClass="m-t-md ajax-form-login validate-form" method="post" modelAttribute="coaldispatchedreport" id="coaldispatchedreport_form">
 	                
 	               	
 	               	<div class="form-group">

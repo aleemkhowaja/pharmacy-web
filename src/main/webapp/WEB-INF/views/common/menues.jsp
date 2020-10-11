@@ -10,6 +10,9 @@
     <c:url var="returnDispatchPartyLedgerPage" value="/dispatchpartyledger.htm" ></c:url>
     <c:url var="returnEmployeeSalaryPage" value="/employeesalary.htm" ></c:url>
     <c:url var="returnBalanceSheetPage" value="/balancesheet.htm" ></c:url>
+    
+    <!-- Report page url -->
+    <c:url var="returnCoalDispatchReportPage" value="/coaldispatchreport.htm" ></c:url>
 
     
     <c:url var="logout" value="/logout" ></c:url>
@@ -81,8 +84,10 @@
 		            <li class="droplink "><a href="#" onclick="returnPage('${returnEmployeeSalaryPage}',event);"  ><span class="menu-icon fa fa-building"></span><p>Employee Salary</p><span class="arrow"></span></a>
 		            
 		            <li class="droplink "><a href="#" onclick="returnPage('${returnBalanceSheetPage}',event);"  ><span class="menu-icon fa fa-building"></span><p>Balance Sheet</p><span class="arrow"></span></a>
-		            
 		            </li>
+		            
+		            <h4>Reports</h4>
+		            	<li class="droplink "><a href="#" onclick="returnPage('${returnCoalDispatchReportPage}',event);"  ><span class="menu-icon fa fa-building"></span><p>Coal Dispatch Report</p><span class="arrow"></span></a>
 		     	</ul>
 	        <%-- </c:if> --%>
         </div><!-- Page Sidebar Inner -->

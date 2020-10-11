@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2020-10-01T20:41:31 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="weekly-coal-report" language="groovy" pageWidth="900" pageHeight="800" whenNoDataType="AllSectionsNoDetail" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="d756530a-fc44-4b37-a88f-b6327a0fe3b0">
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="weekly-coal-report" pageWidth="900" pageHeight="800" whenNoDataType="AllSectionsNoDetail" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="d756530a-fc44-4b37-a88f-b6327a0fe3b0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="216"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="772"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="468"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="518"/>
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT dp.dispatch_party,dps.quality,dps.tons,dps.rate,dps.amount,dps.rebate
 FROM dispatch_party dp
 INNER JOIN dispatch_party_details dps ON dps.dispatch_party_id=dp.dispatch_party_id
-WHERE DATE(dps.date_of)>= $P{fromDate} AND DATE(dps.date_of)<= $P{toDate}
+WHERE DATE(dps.date_of)>= $P{fromDate}  AND DATE(dps.date_of)<= $P{toDate} 
 ORDER BY dp.`dispatch_party`]]>
 	</queryString>
 	<field name="dispatch_party" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dispatch_party"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="quality" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="quality"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party_details"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tons" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tons"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party_details"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="rate" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party_details"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="amount" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party_details"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="rebate" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="rebate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispatch_party_details"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="tonTotal" class="java.math.BigDecimal" resetType="Group" resetGroup="party" calculation="Sum">
+	<variable name="tonTotal" class="java.lang.Integer" resetType="Group" resetGroup="party" calculation="Sum">
 		<variableExpression><![CDATA[$F{tons}]]></variableExpression>
 	</variable>
 	<variable name="amount_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
@@ -82,7 +98,7 @@ ORDER BY dp.`dispatch_party`]]>
 					<textElement>
 						<font size="14" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{tonTotal} == null ? "" : $V{tonTotal} ]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{tonTotal} == null ? "" : $V{tonTotal}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="560" y="0" width="300" height="30" uuid="dd089136-50d8-4567-988b-ce74585d597f"/>
@@ -132,32 +148,42 @@ ORDER BY dp.`dispatch_party`]]>
 	<title>
 		<band height="64" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="860" height="28" uuid="45a93437-cba4-44a9-ae9d-f6da0617e497"/>
-				<textElement textAlignment="Center">
-					<font size="20" isBold="true"/>
+				<reportElement x="170" y="10" width="690" height="48" uuid="45a93437-cba4-44a9-ae9d-f6da0617e497"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="26" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Coal Dispatched]]></text>
+				<text><![CDATA[Coal Dispatch Report]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="340" y="30" width="71" height="20" uuid="5448a320-981c-4baf-a9a9-1823128e06ab"/>
-				<textElement>
+				<reportElement x="61" y="41" width="80" height="20" uuid="5448a320-981c-4baf-a9a9-1823128e06ab"/>
+				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="30" width="100" height="20" uuid="17c9b046-03ab-418e-8330-6691f24009d0"/>
-				<textElement>
+				<reportElement x="61" y="20" width="80" height="20" uuid="17c9b046-03ab-418e-8330-6691f24009d0"/>
+				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="430" y="30" width="56" height="20" uuid="ff33059d-8f4b-4465-a2b7-f5ff405d2747"/>
-				<textElement>
-					<font size="12" isBold="true"/>
+				<reportElement x="0" y="20" width="60" height="20" uuid="cc26c76d-97a4-4264-9c94-9f62dc595271"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TO]]></text>
+				<text><![CDATA[From Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="41" width="60" height="20" uuid="3309cc6c-404c-41a3-80bf-1430405d3de6"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To Date]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -168,7 +194,7 @@ ORDER BY dp.`dispatch_party`]]>
 		<band height="21" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="111" height="20" uuid="5b900912-b49f-4f4c-b9df-27239cfbf54d"/>
-				<box>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -182,7 +208,7 @@ ORDER BY dp.`dispatch_party`]]>
 			</staticText>
 			<staticText>
 				<reportElement x="111" y="0" width="111" height="20" uuid="bdc69ae3-3044-4e24-8bc9-f64eaee9da8c"/>
-				<box>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -196,7 +222,7 @@ ORDER BY dp.`dispatch_party`]]>
 			</staticText>
 			<staticText>
 				<reportElement x="222" y="0" width="111" height="20" uuid="11dbc9bd-6e99-45f0-8ee6-2413c472bbab"/>
-				<box>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -210,7 +236,7 @@ ORDER BY dp.`dispatch_party`]]>
 			</staticText>
 			<staticText>
 				<reportElement x="333" y="0" width="111" height="20" uuid="a961ce47-dd3d-498f-b4d8-f7285f7fe66b"/>
-				<box>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -224,7 +250,7 @@ ORDER BY dp.`dispatch_party`]]>
 			</staticText>
 			<staticText>
 				<reportElement x="444" y="0" width="111" height="20" uuid="b0f8d5c8-59da-46d0-ae84-d3d2ace2dcf2"/>
-				<box>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -237,7 +263,7 @@ ORDER BY dp.`dispatch_party`]]>
 				<text><![CDATA[AMOUNT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="760" y="1" width="100" height="20" uuid="ae1bbbd9-2b67-4544-a2c7-d1fe884f970e"/>
+				<reportElement x="760" y="1" width="100" height="19" uuid="ae1bbbd9-2b67-4544-a2c7-d1fe884f970e"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -251,7 +277,7 @@ ORDER BY dp.`dispatch_party`]]>
 				<text><![CDATA[     REBATE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="660" y="1" width="100" height="20" uuid="82a5eb8f-8f44-4bc4-9a9f-bf80d9a5455b"/>
+				<reportElement x="660" y="1" width="100" height="19" uuid="82a5eb8f-8f44-4bc4-9a9f-bf80d9a5455b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -265,8 +291,8 @@ ORDER BY dp.`dispatch_party`]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="555" y="1" width="105" height="20" uuid="e6847d02-5913-4795-91cc-6bff07b231d1"/>
-				<box>
+				<reportElement x="555" y="1" width="105" height="19" uuid="e6847d02-5913-4795-91cc-6bff07b231d1"/>
+				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
