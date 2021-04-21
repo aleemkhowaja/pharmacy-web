@@ -1,0 +1,34 @@
+input SupplierSuggestionInput{
+    supplierLastName: String,
+    supplierEmail: String,
+    supplierPhone: String,
+    supplierFax: String,
+    supplierWebsite: String,
+    supplierAddress: String,
+    supplierCity: String,
+    supplierPostalCode: String,
+    supplierCountry: String,
+    supplierDescription: String
+}
+type SupplierSuggestion{
+    id: ID!,
+    supplierLastName: String,
+    supplierEmail: String,
+    supplierPhone: String,
+    supplierFax: String,
+    supplierWebsite: String,
+    supplierAddress: String,
+    supplierCity: String,
+    supplierPostalCode: String,
+    supplierCountry: String,
+    supplierDescription: String
+}
+extend type Query{
+    allSupplierSuggestions:[SupplierSuggestion]
+    supplierSuggestionById(supplierSuggestionId: ID):SupplierSuggestion
+}
+extend type Mutation{
+    createSupplierSuggestion(input: SupplierSuggestionInput):SupplierSuggestion
+    updateSupplierSuggestion(id:ID!, input: SupplierSuggestionInput):SupplierSuggestion
+    deleteSupplierSuggestion(id: ID): SupplierSuggestion
+}

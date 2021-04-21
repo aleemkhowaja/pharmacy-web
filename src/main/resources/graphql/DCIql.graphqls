@@ -1,0 +1,10 @@
+input DCIInput{
+    id: ID!
+}
+type DCI{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllDCI: [DCI]
+}

@@ -1,0 +1,42 @@
+
+input ContactInput{
+    manager: String,
+    title: String,
+    firstName: String,
+    lastName: String,
+    customer: String,
+    provider: String,
+    relationshipType: String,
+    email: String,
+    phone: String,
+    portable: String,
+    dateOfBirth: String,
+    description: String
+}
+
+type Contact{
+    id: ID!,
+    manager: String,
+    title: String,
+    firstName: String,
+    lastName: String,
+    customer: String,
+    provider: String,
+    relationshipType: String,
+    email: String,
+    phone: String,
+    portable: String,
+    dateOfBirth: String,
+    description: String
+}
+
+
+extend type Query{
+    getAllContacts:[Contact]
+    ContactById(id:ID!): Contact
+}
+extend type Mutation{
+    createContact(input: ContactInput): Contact
+    updateContact(id:ID!,input:ContactInput):Contact
+    deleteContact(id:ID!):Contact
+}

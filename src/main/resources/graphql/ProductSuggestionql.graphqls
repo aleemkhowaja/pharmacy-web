@@ -1,0 +1,77 @@
+input ProductSuggestionInput{
+    lastName: String,
+    barCode: String,
+    barCode2: String,
+    category: String,
+    therapeuticClass: String,
+    pharmaceuticalForm: String,
+    dci: DCIInput,
+    laboratory: String,
+    range1: String,
+    subRange: String,
+    productTable: String,
+    requiresPrescription: String,
+    productMarket: String,
+    pph: String,
+    ppv: String,
+    vatOnPurchase: String,
+    vatOnSale: String,
+    isRefundable: String,
+    basisOfReimbursement: String,
+    presentation: String,
+    excipients: String,
+    adultDosage: String,
+    dosageForChildren: String,
+    indications: String,
+    contraindicationDriving: String,
+    breastFeedingContraindication: String,
+    pregnancyContraindication: String,
+    productLabReference: String,
+    conditioning: String,
+    monoGraph: String,
+    description: String
+}
+type ProductSuggestion{
+    id: ID!,
+    lastName: String,
+    barCode: String,
+    barCode2: String,
+    category: String,
+    therapeuticClass: String,
+    pharmaceuticalForm: String,
+    dci: DCI,
+    laboratory: String,
+    range1: String,
+    subRange: String,
+    productTable: String,
+    requiresPrescription: String,
+    productMarket: String,
+    pph: String,
+    ppv: String,
+    vatOnPurchase: String,
+    vatOnSale: String,
+    isRefundable: String,
+    basisOfReimbursement: String,
+    presentation: String,
+    excipients: String,
+    adultDosage: String,
+    dosageForChildren: String,
+    indications: String,
+    contraindicationDriving: String,
+    breastFeedingContraindication: String,
+    pregnancyContraindication: String,
+    productLabReference: String,
+    conditioning: String,
+    monoGraph: String,
+    description: String
+
+}
+extend type Query{
+    getAllProductSuggestions:[ProductSuggestion]
+    ProductSuggestionById(id: ID!):ProductSuggestion
+}
+extend type Mutation{
+    createProductSuggestion(input: ProductSuggestionInput): ProductSuggestion
+    updateProductSuggestion(id: ID!, input: ProductSuggestionInput): ProductSuggestion
+    deleteProductSuggestion(id: ID!): ProductSuggestion
+}

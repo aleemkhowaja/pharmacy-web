@@ -1,0 +1,10 @@
+input CountryInput{
+    id: ID!
+}
+type Country{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllCountries: [Country]
+}

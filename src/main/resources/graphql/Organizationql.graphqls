@@ -1,0 +1,10 @@
+input OrganizationInput{
+    id: ID!
+}
+type Organization{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllOrganizations: [Organization]
+}

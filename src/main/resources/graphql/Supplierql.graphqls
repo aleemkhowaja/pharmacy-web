@@ -1,0 +1,34 @@
+input SupplierInput{
+    supplierLastName: String,
+    supplierEmail: String,
+    supplierPhone: String,
+    supplierFax: String,
+    supplierWebsite: String,
+    supplierAddress: String,
+    supplierCity: String,
+    supplierPostalCode: String,
+    supplierCountry: String,
+    supplierDescription: String
+}
+type Supplier{
+    id: ID!,
+    supplierLastName: String,
+    supplierEmail: String,
+    supplierPhone: String,
+    supplierFax: String,
+    supplierWebsite: String,
+    supplierAddress: String,
+    supplierCity: String,
+    supplierPostalCode: String,
+    supplierCountry: String,
+    supplierDescription: String
+}
+type Query{
+    allSuppliers:[Supplier]
+    supplier(id: ID!):Supplier
+}
+type Mutation{
+    createSupplier(input: SupplierInput):Supplier
+    updateSupplier(id: ID!, input: SupplierInput):Supplier
+    deleteSupplier(id: ID!): Supplier
+}

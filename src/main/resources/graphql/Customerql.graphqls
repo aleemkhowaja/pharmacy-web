@@ -1,0 +1,46 @@
+input CustomerInput{
+    manager: String,
+    firstName: String,
+    lastName: String,
+    type: String,
+    cin: String,
+    cnss: String,
+    email: String,
+    phone: String,
+    creditLimit: String,
+    organization: OrganizationInput,
+    affiliateNumber: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: CountryInput,
+    description: String
+}
+type Customer{
+    id: ID!,
+    manager: String,
+    firstName: String,
+    lastName: String,
+    type: String,
+    cin: String,
+    cnss: String,
+    email: String,
+    phone: String,
+    creditLimit: String,
+    organization: Organization,
+    affiliateNumber: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: Country,
+    description: String
+}
+extend type Query {
+    getAllCustomers: [Customer]
+    customerById(id: ID!): Customer
+}
+extend type Mutation {
+    createCustomer(input: CustomerInput): Customer
+    updateCustomer(id: ID!, input: CustomerInput): Customer
+    deleteCustomer(id: ID!): Customer
+}

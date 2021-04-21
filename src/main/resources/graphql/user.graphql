@@ -1,0 +1,12 @@
+type User {
+        id: ID!
+        first_name: String
+        last_name: String
+        username: String
+        password: String
+        created_by: Int
+        status: String
+        created_date: String
+        modified_by: Int
+        modified_date: String
+}
