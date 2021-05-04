@@ -7,7 +7,7 @@ input SupplierInput{
     supplierAddress: String,
     supplierCity: String,
     supplierPostalCode: String,
-    supplierCountry: String,
+    country: CountryInput,
     supplierDescription: String
 }
 type Supplier{
@@ -20,7 +20,7 @@ type Supplier{
     supplierAddress: String,
     supplierCity: String,
     supplierPostalCode: String,
-    supplierCountry: String,
+    country: Country,
     supplierDescription: String
 }
 type Query{

@@ -11,7 +11,6 @@ import java.util.List;
 
 @Component
 public class SupplierController implements GraphQLQueryResolver, GraphQLMutationResolver {
-
     @Autowired
     private SupplierService supplierService;
 
@@ -26,12 +25,10 @@ public class SupplierController implements GraphQLQueryResolver, GraphQLMutation
     public Supplier createSupplier(Supplier supplier){
         return supplierService.createSupplier(supplier);
     }
-
-    public Supplier updateSupplier(Long id, Supplier supplier){
+    public Supplier updateSupplier(Long id, Supplier supplier) {
         supplier.setId(id);
         return supplierService.updateSupplier(supplier);
     }
-
     public Supplier deleteSupplier(Long id){
         Supplier supplier = new Supplier();
         supplier.setId(id);

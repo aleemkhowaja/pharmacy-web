@@ -3,14 +3,16 @@ package com.pharm.service.impl.customer;
 import com.pharm.model.Customer;
 import com.pharm.repository.customer.CustomerRepository;
 import com.pharm.service.interfaces.customer.CustomerService;
-import com.samcm.util.CommonConstant;
+import com.pharm.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.pharm.util.CommonConstant.DELETE;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Service
 
@@ -28,11 +30,12 @@ public class CustomerImpl implements CustomerService {
     @Override
     public Customer update(Customer customer) {
         if(customer.getId()!=null){
-            Customer persited = findById(customer.getId().intValue());
+            Customer persited = findById(customer.getId());
             if(persited==null){
                 return  null;
             }
         }
+        customer.setStatus("A");
         Customer updated =customerRepository.save(customer);
         return updated;
     }
@@ -40,14 +43,14 @@ public class CustomerImpl implements CustomerService {
     @Override
     public Customer delete(Customer customer) {
         if(customer!=null && customer.getId()!=null){
-            customer.setStatus(CommonConstant.DELETE);
+            customer.setStatus(DELETE);
         }
 
         return customerRepository.save(customer);
     }
 
     @Override
-    public Customer findById(Integer id) {
+    public Customer findById(Long id) {
 
             Optional<Customer> optionalCustomer = customerRepository.findById(id);
             if(optionalCustomer.isPresent())
@@ -56,8 +59,19 @@ public class CustomerImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findAll() {
-        List<Customer> customers = customerRepository.findAll();
-        return customers;
+    public List<Customer> findAll(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy)
+    {
+        String validationErrors = PageUtil.validatePaginationParams(pageNumber, pageSize, sortOrder, sortBy);
+        if((isNotBlank(validationErrors))) {
+            throw new IllegalArgumentException(validationErrors);
+        }
+
+        Page<Customer> customers = customerRepository.findAll(PageUtil.returnPageable(pageNumber, pageSize, sortOrder, sortBy));
+        if(customers.hasContent())
+        {
+            final Long size = customerRepository.count();
+            customers.getContent().get(0).setCount(size);
+        }
+        return customers.getContent();
     }
 }

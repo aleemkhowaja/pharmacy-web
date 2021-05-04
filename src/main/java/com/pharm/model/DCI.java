@@ -10,11 +10,8 @@ import javax.persistence.*;
 @Table(name="dci")
 @Getter
 @Setter
-public class DCI{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class DCI extends  Common{
+
     @Column(name = "name")
     private String name;
 }

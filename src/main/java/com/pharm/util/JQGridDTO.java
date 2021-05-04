@@ -1,4 +1,4 @@
-package com.samcm.util;
+package com.pharm.util;
 
 import java.io.Serializable;
 import java.util.List;

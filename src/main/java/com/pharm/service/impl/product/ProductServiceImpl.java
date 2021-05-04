@@ -3,13 +3,14 @@ package com.pharm.service.impl.product;
 import com.pharm.model.Product;
 import com.pharm.repository.product.ProductRepository;
 import com.pharm.service.interfaces.product.ProductService;
-import com.samcm.util.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.pharm.util.CommonConstant.DELETE;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -34,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public Product delete(Product product) {
         if(product!=null && product.getId()!=null){
-            product.setStatus(CommonConstant.DELETE);
+            product.setStatus(DELETE);
         }
 
         return productRepository.save(product);

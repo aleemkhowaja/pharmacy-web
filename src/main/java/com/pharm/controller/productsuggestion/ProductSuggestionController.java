@@ -16,19 +16,15 @@ public class ProductSuggestionController implements GraphQLMutationResolver, Gra
     private ProductSuggestionService productSuggestionService;
 
     public List<ProductSuggestion> getAllProductSuggestions() { return productSuggestionService.findAll(); }
-
     public ProductSuggestion getProductSuggestionById(Long id) { return productSuggestionService.findById(id); }
-
     public ProductSuggestion createProductSuggestion(ProductSuggestion productSuggestion) {
         productSuggestion.setStatus("A");
         return productSuggestionService.create(productSuggestion);
     }
-
     public ProductSuggestion updateProductSuggestion(long id, ProductSuggestion productSuggestion) {
         productSuggestion.setId(id);
         return productSuggestionService.update(productSuggestion);
     }
-
     public ProductSuggestion deleteProductSuggestion(long id) {
         ProductSuggestion productSuggestion = new ProductSuggestion();
         productSuggestion.setId(id);

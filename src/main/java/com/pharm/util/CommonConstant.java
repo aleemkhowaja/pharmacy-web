@@ -1,4 +1,4 @@
-package com.samcm.util;
+package com.pharm.util;
 
 /**
  * 
@@ -13,5 +13,8 @@ public class CommonConstant
 {
     public static final String ACTIVE = "A";
     public static final String DELETE = "D";
+
+    public static final String SORT_ASC = "ASC";
+    public static final String SORT_DESC = "DSC";
 
 }

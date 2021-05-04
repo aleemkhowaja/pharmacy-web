@@ -1,14 +1,16 @@
-input CustomerInput{
-    manager: String,
+input CustomerInput
+{
+    manager: ManagerInput,
     firstName: String,
     lastName: String,
-    type: String,
+    type: TypeInput,
     cin: String,
     cnss: String,
     email: String,
     phone: String,
     creditLimit: String,
     organization: OrganizationInput,
+    registerationNumber: String,
     affiliateNumber: String,
     address: String,
     city: String,
@@ -16,31 +18,39 @@ input CustomerInput{
     country: CountryInput,
     description: String
 }
-type Customer{
+
+type Customer
+{
     id: ID!,
-    manager: String,
+    manager: Manager,
     firstName: String,
     lastName: String,
-    type: String,
+    type: Type,
     cin: String,
     cnss: String,
     email: String,
     phone: String,
     creditLimit: String,
     organization: Organization,
+    registerationNumber : String,
     affiliateNumber: String,
     address: String,
     city: String,
     postalCode: String,
     country: Country,
-    description: String
+    description: String,
+    count : Int
 }
-extend type Query {
-    getAllCustomers: [Customer]
+
+extend type Query
+{
+    getAllCustomers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!): [Customer]
     customerById(id: ID!): Customer
 }
-extend type Mutation {
-    createCustomer(input: CustomerInput): Customer
-    updateCustomer(id: ID!, input: CustomerInput): Customer
+
+extend type Mutation
+{
+    createCustomer(input: CustomerInput!): Customer
+    updateCustomer(id: ID!, input: CustomerInput!): Customer
     deleteCustomer(id: ID!): Customer
 }

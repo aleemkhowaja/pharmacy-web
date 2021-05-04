@@ -3,14 +3,14 @@ package com.pharm.service.impl.supplier;
 import com.pharm.model.Supplier;
 import com.pharm.repository.supplier.SupplierRepository;
 import com.pharm.service.interfaces.supplier.SupplierService;
-import com.samcm.util.CommonConstant;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.pharm.util.CommonConstant.DELETE;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -58,7 +58,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Transactional
     public Supplier deleteSupplier(Supplier supplier) {
         if(supplier!=null && supplier.getId()!=null){
-            supplier.setStatus(CommonConstant.DELETE);
+            supplier.setStatus(DELETE);
         }
 
         return supplierRepository.save(supplier);

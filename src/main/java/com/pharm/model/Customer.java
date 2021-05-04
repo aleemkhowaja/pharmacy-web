@@ -3,7 +3,6 @@ package com.pharm.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +12,9 @@ import javax.persistence.*;
 @Setter
 public class Customer extends Common {
 
-    @Column(name = "manager")
-    private String manager;
+    @ManyToOne
+    @JoinColumn(name = "manager")
+    private Manager manager;
 
     @Column(name = "first_name")
     private String firstName;
@@ -22,8 +22,9 @@ public class Customer extends Common {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "type")
-    private String type;
+    @ManyToOne
+    @JoinColumn(name = "type")
+    private Type type;
 
     @Column(name = "cin")
     private String cin;
@@ -41,7 +42,7 @@ public class Customer extends Common {
     private String creditLimit;
 
     @ManyToOne
-    @JoinColumn(name = "organization_id")
+    @JoinColumn(name = "organization")
     private Organization organization;
 
     @Column(name = "registeration_number")
@@ -60,7 +61,7 @@ public class Customer extends Common {
     private String postalCode;
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country")
     private Country country;
 
     @Column(name = "description")

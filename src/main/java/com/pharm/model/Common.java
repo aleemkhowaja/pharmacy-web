@@ -1,7 +1,7 @@
 package com.pharm.model;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @MappedSuperclass
 public class Common {
@@ -25,6 +25,9 @@ public class Common {
 	
 	@Column(name = "modified_date")
 	private Date modifiedDate;
+
+	@Transient
+	private Long count;
 
 	public String getStatus() { return status; }
 
@@ -65,4 +68,8 @@ public class Common {
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+
+	public Long getCount() { return count;}
+
+	public void setCount(Long count) { this.count = count; }
 }

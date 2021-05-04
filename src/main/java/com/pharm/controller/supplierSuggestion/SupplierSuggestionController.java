@@ -4,12 +4,10 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.pharm.model.SupplierSuggestion;
 import com.pharm.service.interfaces.suppliersuggestion.SupplierSuggestionService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class SupplierSuggestionController implements GraphQLQueryResolver, GraphQLMutationResolver {

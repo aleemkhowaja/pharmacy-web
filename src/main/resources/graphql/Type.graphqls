@@ -1,0 +1,17 @@
+input TypeInput{
+    id: ID,
+    name: String
+}
+type Type{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllTypes: [Type]
+    TypeById(id: ID!): Type
+}
+extend type Mutation{
+    createType(input: TypeInput): Type
+    updateType(input: TypeInput): Type
+    deleteType(id: ID!): Type
+}

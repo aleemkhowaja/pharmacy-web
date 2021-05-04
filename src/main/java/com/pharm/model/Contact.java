@@ -13,13 +13,10 @@ import javax.persistence.*;
 @Where(clause = "status='A'")
 public class Contact extends Common{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
 
-    @Column(name = "manager")
-    private String manager;
+    @ManyToOne
+    @JoinColumn(name = "manager")
+    private Manager manager;
 
     @Column(name = "title")
     private String title;

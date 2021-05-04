@@ -3,13 +3,14 @@ package com.pharm.service.impl.contact;
 import com.pharm.model.Contact;
 import com.pharm.repository.contact.ContactRepository;
 import com.pharm.service.interfaces.contact.ContactService;
-import com.samcm.util.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.pharm.util.CommonConstant.DELETE;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -34,7 +35,7 @@ public class ContactServiceImpl implements ContactService {
     @Transactional
     public Contact delete(Contact contact) {
         if(contact!=null && contact.getId()!=null){
-            contact.setStatus(CommonConstant.DELETE);
+            contact.setStatus(DELETE);
         }
 
         return contactRepository.save(contact);

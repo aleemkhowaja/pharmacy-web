@@ -3,13 +3,14 @@ package com.pharm.service.impl.productsuggestion;
 import com.pharm.model.ProductSuggestion;
 import com.pharm.repository.productsuggestion.ProductSuggestionRepository;
 import com.pharm.service.interfaces.productsuggestion.ProductSuggestionService;
-import com.samcm.util.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.pharm.util.CommonConstant.DELETE;
 
 @Service
 public class ProductSuggestionServiceImpl implements ProductSuggestionService {
@@ -34,7 +35,7 @@ public class ProductSuggestionServiceImpl implements ProductSuggestionService {
     @Transactional
     public ProductSuggestion delete(ProductSuggestion productSuggestion) {
         if(productSuggestion!=null && productSuggestion.getId()!=null){
-            productSuggestion.setStatus(CommonConstant.DELETE);
+            productSuggestion.setStatus(DELETE);
         }
 
         return productSuggestionRepository.save(productSuggestion);

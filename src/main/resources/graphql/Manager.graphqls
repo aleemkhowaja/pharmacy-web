@@ -1,0 +1,17 @@
+input ManagerInput{
+    id: ID,
+    name: String
+}
+type Manager{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllManagers: [Manager]
+    ManagerById(id: ID!): Manager
+}
+extend type Mutation{
+    createManager(input: ManagerInput): Manager
+    updateManager(input: ManagerInput): Manager
+    deleteManager(id: ID!): Manager
+}

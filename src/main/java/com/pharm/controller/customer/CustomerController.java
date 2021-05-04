@@ -15,29 +15,26 @@ public class CustomerController implements GraphQLMutationResolver, GraphQLQuery
     @Autowired
     private CustomerService customerService;
 
-    public List<Customer> getAllCustomers()
+    public List<Customer> getAllCustomers(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy)
     {
-        return customerService.findAll();
+        return customerService.findAll(pageNumber, pageSize, sortOrder, sortBy);
     }
 
-    public Customer getCustomerById(Integer id)
-    {
+    public Customer getCustomerById(Long id){
         return customerService.findById(id);
     }
 
-    public Customer createCustomer(Customer customer)
-    {
+    public Customer createCustomer(Customer customer){
+
         return customerService.create(customer);
     }
 
-    public Customer updateCustomer(Long id, Customer customer)
-    {
+    public Customer updateCustomer(Long id, Customer customer){
         customer.setId(id);
         return customerService.update(customer);
     }
 
-    public Customer deleteCustomer(Long id)
-    {
+    public Customer deleteCustomer(Long id){
         Customer customer = new Customer();
         customer.setId(id);
         return customerService.delete(customer);

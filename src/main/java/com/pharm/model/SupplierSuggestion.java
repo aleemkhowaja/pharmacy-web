@@ -3,43 +3,35 @@ package com.pharm.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
-@Table(name="suggestion")
+@Table(name="supplier_suggestion")
 @Where(clause = "status='A'")
 public class SupplierSuggestion extends Common {
 
-
-    @Column(name="last_name")
+    @Column(name="supplier_last_name")
     private String supplierLastName;
-
-    @Column(name="email")
+    @Column(name="supplier_email")
     private String supplierEmail;
-
-    @Column(name="phone")
+    @Column(name="supplier_phone")
     private String supplierPhone;
-
-    @Column(name="fax")
+    @Column(name="supplier_fax")
     private String supplierFax;
-
-    @Column(name="webstie")
+    @Column(name="supplier_webstie")
     private String supplierWebsite;
-
-    @Column(name="address")
+    @Column(name="supplier_address")
     private String supplierAddress;
-
-    @Column(name="city")
+    @Column(name="supplier_city")
     private String supplierCity;
-
     @Column(name="supplier_postal_code")
     private String supplierPostalCode;
-
-    @Column(name="supplier_country")
-    private String supplierCountry;
-
+    @ManyToOne
+    @JoinColumn(name="supplier_country")
+    private Country country;
     @Column(name="supplier_description")
     private String supplierDescription;
 }

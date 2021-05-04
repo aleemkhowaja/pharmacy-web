@@ -7,7 +7,7 @@ input SupplierSuggestionInput{
     supplierAddress: String,
     supplierCity: String,
     supplierPostalCode: String,
-    supplierCountry: String,
+    country: CountryInput,
     supplierDescription: String
 }
 type SupplierSuggestion{
@@ -20,12 +20,12 @@ type SupplierSuggestion{
     supplierAddress: String,
     supplierCity: String,
     supplierPostalCode: String,
-    supplierCountry: String,
+    country: Country,
     supplierDescription: String
 }
 extend type Query{
     allSupplierSuggestions:[SupplierSuggestion]
-    supplierSuggestionById(supplierSuggestionId: ID):SupplierSuggestion
+    supplierSuggestionById(id: ID):SupplierSuggestion
 }
 extend type Mutation{
     createSupplierSuggestion(input: SupplierSuggestionInput):SupplierSuggestion

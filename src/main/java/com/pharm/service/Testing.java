@@ -10,7 +10,7 @@ public class Testing {
         List<String> list = Arrays.asList("1","2", "3", null);
         for(String i : list)
         {
-            System.out.println(Optional.of(i)..toString());
+          //  System.out.println(Optional.of(i)..toString());
         }
     }
 

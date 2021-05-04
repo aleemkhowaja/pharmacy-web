@@ -1,0 +1,37 @@
+input ConfreresInput{
+    id: ID,
+    lastName: String,
+    cin: String,
+    cnss: String,
+    email: String,
+    phone: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    description: String,
+    country: CountryInput,
+    manager: ManagerInput
+}
+type Confreres{
+    id: ID!,
+    lastName: String,
+    cin: String,
+    cnss: String,
+    email: String,
+    phone: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    description: String,
+    country: Country,
+    manager: Manager
+}
+extend type Query{
+    getAllConfreres: [Confreres]
+    ConfreresById(id: ID!): Confreres
+}
+extend type Mutation{
+    createConfreres(input: ConfreresInput): Confreres
+    updateConfreres(input: ConfreresInput): Confreres
+    deleteConfreres(id: ID!): Confreres
+}
