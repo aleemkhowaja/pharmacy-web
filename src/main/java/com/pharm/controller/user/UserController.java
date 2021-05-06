@@ -1,26 +1,39 @@
 package com.pharm.controller.user;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.pharm.model.User;
+import com.pharm.service.impl.user.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@RestController
-public class UserController {
+import java.util.List;
 
-    @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+@Component
+public class UserController implements GraphQLQueryResolver, GraphQLMutationResolver {
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+    @Autowired
+    private UserServiceImpl userService;
 
-        return "login";
+    public List<User> getAllUsers(){
+        return userService.findAll();
     }
-    
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
+
+    public User getUserById(final Long id){
+        return userService.findById(id);
     }
-    
+
+    public User createUser(final User user){
+        return userService.create(user);
+    }
+
+    public User updateUser(final User user){
+        return userService.update(user);
+    }
+
+    public User deleteCountry(final Long id){
+        User User = new User();
+        User.setId(id);
+        return userService.delete(User);
+    }
 }

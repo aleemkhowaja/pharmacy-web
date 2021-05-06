@@ -44,7 +44,7 @@ type Customer
 
 extend type Query
 {
-    getAllCustomers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!): [Customer]
+    getAllCustomers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: CustomerInput): [Customer]
     customerById(id: ID!): Customer
 }
 
@@ -54,3 +54,4 @@ extend type Mutation
     updateCustomer(id: ID!, input: CustomerInput!): Customer
     deleteCustomer(id: ID!): Customer
 }
+

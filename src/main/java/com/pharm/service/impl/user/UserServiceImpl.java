@@ -1,8 +1,8 @@
 package com.pharm.service.impl.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.pharm.model.User;
+import com.pharm.repository.user.UserRepository;
+import com.pharm.service.interfaces.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,13 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.pharm.model.User;
-import com.pharm.repository.user.UserRepository;
-
-import javax.persistence.Cacheable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
-public class UserServiceImpl  implements UserDetailsService{
+public class UserServiceImpl  implements UserDetailsService, UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -42,5 +40,29 @@ public class UserServiceImpl  implements UserDetailsService{
 		 
 		 return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantList);
 	}
-	
+
+	@Override
+	public List<User> findAll() {
+		return userRepository.findAllByRole("manager");
+	}
+
+	@Override
+	public User findById(Long id) {
+		return null;
+	}
+
+	@Override
+	public User create(User user) {
+		return null;
+	}
+
+	@Override
+	public User update(User user) {
+		return null;
+	}
+
+	@Override
+	public User delete(User user) {
+		return null;
+	}
 }

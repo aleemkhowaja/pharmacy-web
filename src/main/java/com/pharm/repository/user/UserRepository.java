@@ -1,11 +1,13 @@
 package com.pharm.repository.user;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 import com.pharm.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<User, Long> {
 	
 	/**
 	 * find By Username for login
@@ -13,4 +15,6 @@ public interface UserRepository extends CrudRepository<User, Integer>{
 	 * @return
 	 */
 	User findByUsername(String username);
+
+	List<User> findAllByRole(final String role);
 }

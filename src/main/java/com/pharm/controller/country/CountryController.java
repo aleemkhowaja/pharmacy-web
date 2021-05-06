@@ -18,15 +18,19 @@ public class CountryController implements GraphQLQueryResolver, GraphQLMutationR
     public List<Country> getAllCountries(){
         return countryService.findAll();
     }
-    public Country getCountryById(Long id){
+
+    public Country getCountryById(final Long id){
         return countryService.findById(id);
     }
-    public Country createCountry(Country country){
+
+    public Country createCountry(final Country country){
         return countryService.create(country);
     }
-    public Country updateCountry(Country country){
+
+    public Country updateCountry(final Country country){
         return countryService.update(country);
     }
+
     public Country deleteCountry(Long id){
         Country country = new Country();
         country.setId(id);

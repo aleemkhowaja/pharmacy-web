@@ -59,17 +59,20 @@ public class CustomerImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findAll(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy)
+    public List<Customer> findAll(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy, final Customer customer)
     {
         String validationErrors = PageUtil.validatePaginationParams(pageNumber, pageSize, sortOrder, sortBy);
         if((isNotBlank(validationErrors))) {
             throw new IllegalArgumentException(validationErrors);
         }
 
-        Page<Customer> customers = customerRepository.findAll(PageUtil.returnPageable(pageNumber, pageSize, sortOrder, sortBy));
+        Page<Customer> customers = customerRepository.filter(customer.getLastName(),customer.getCin(), customer.getCnss(), customer.getEmail(),
+                customer.getPhone(), customer.getCreditLimit(),PageUtil.returnPageable(pageNumber, pageSize, sortOrder, sortBy));
         if(customers.hasContent())
         {
-            final Long size = customerRepository.count();
+            final Long size = customerRepository.count(customer.getLastName(),customer.getCin(), customer.getCnss(), customer.getEmail(),
+                    customer.getPhone(), customer.getCreditLimit());
+            System.out.println("size::"+size);
             customers.getContent().get(0).setCount(size);
         }
         return customers.getContent();

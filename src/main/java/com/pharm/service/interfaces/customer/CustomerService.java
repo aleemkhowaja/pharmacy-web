@@ -16,6 +16,6 @@ public interface CustomerService {
     Customer findById(final Long id);
 
     @Transactional
-    List<Customer> findAll(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy);
+    List<Customer> findAll(final int pageNumber, final int pageSize, final String sortOrder, final String sortBy, final Customer customer);
 
 }
