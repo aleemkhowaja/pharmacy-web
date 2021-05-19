@@ -1,6 +1,10 @@
+scalar  Date
+scalar  DateTime
+
 input CustomerInput
 {
     manager: ManagerInput,
+    doctor : DoctorInput,
     firstName: String,
     lastName: String,
     type: TypeInput,
@@ -16,7 +20,9 @@ input CustomerInput
     city: String,
     postalCode: String,
     country: CountryInput,
-    description: String
+    description: String,
+    createdBy : UserInput
+    modifiedBy : UserInput,
 }
 
 type Customer
@@ -38,8 +44,15 @@ type Customer
     city: String,
     postalCode: String,
     country: Country,
+    doctor : Doctor,
     description: String,
-    count : Int
+    count : Int,
+    status : String,
+    createdBy : User,
+    createdDate : DateTime,
+    modifiedBy : User,
+    modifiedDate : DateTime
+
 }
 
 extend type Query

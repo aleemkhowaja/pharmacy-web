@@ -11,7 +11,7 @@ public class OrganizationResolver implements GraphQLResolver<Organization> {
     private OrganizationService organizationService;
 
         public Organization getOrganization(Customer customer){
-        return organizationService.findById(customer.getOrganization().getId().intValue());
+        return organizationService.findById(customer.getOrganization().getId());
     }
 
 }

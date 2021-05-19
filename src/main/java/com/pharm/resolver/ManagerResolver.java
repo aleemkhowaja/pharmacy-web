@@ -13,8 +13,8 @@ public class ManagerResolver implements GraphQLResolver<Manager> {
     private ManagerService managerService;
 
     public Manager getManager(Contact contact){
-        return managerService.findById(contact.getManager().getId().intValue());
+        return managerService.findById(contact.getManager().getId());
     }
-    public Manager getManager(Customer customer){ return managerService.findById(customer.getManager().getId().intValue()); }
-    public Manager getManager(Confreres confreres){ return managerService.findById(confreres.getManager().getId().intValue()); }
+    public Manager getManager(Customer customer){ return managerService.findById(customer.getManager().getId()); }
+    public Manager getManager(Confreres confreres){ return managerService.findById(confreres.getManager().getId()); }
 }

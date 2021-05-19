@@ -11,6 +11,6 @@ public class TypeResolver implements GraphQLResolver<Type>{
     private TypeService typeService;
 
         public Type getType(Customer customer){
-        return typeService.findById(customer.getType().getId().intValue());
+        return typeService.findById(customer.getType().getId());
     }
 }

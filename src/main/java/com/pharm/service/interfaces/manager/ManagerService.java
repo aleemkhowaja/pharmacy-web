@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ManagerService {
     List<Manager> findAll();
-    Manager findById(Integer id);
+    Manager findById(Long id);
     Manager create(Manager manager);
     Manager update(Manager manager);
     Manager delete(Manager manager);

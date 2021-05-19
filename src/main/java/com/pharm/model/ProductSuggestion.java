@@ -23,24 +23,32 @@ public class ProductSuggestion extends Common {
     @Column(name = "bar_code2")
     private String barCode2;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "laboratory")
+    private String laboratory;
 
-    @Column(name = "therapeutic_class")
-    private String therapeuticClass;
 
-    @Column(name = "pharmaceutical_form")
-    private String pharmaceuticalForm;
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "therapeutic_class")
+    private TherapeuticClass therapeuticClass;
+
+    @ManyToOne
+    @JoinColumn(name = "pharmaceutical_form")
+    private PharmaceuticalForm pharmaceuticalForm;
 
     @ManyToOne
     @JoinColumn(name = "dci")
     private DCI dci;
 
-    @Column(name = "laboratory")
-    private String laboratory;
 
-    @Column(name = "range1")
-    private String range1;
+
+    @ManyToOne
+    @JoinColumn(name = "range1")
+    private Range range1;
+
 
     @Column(name = "sub_range")
     private String subRange;

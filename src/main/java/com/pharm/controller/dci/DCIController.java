@@ -18,7 +18,7 @@ public class DCIController implements GraphQLQueryResolver, GraphQLMutationResol
     public List<DCI> getAllDCI(){
         return dciService.findAll();
     }
-    public DCI getDCIById(Integer id){
+    public DCI getDCIById(Long id){
         return dciService.findById(id);
     }
     public DCI createDCI(DCI dci){

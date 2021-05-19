@@ -1,0 +1,10 @@
+input RangeInput{
+    id: ID!
+}
+type Range{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllRanges: [Range]
+}

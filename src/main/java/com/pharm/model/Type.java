@@ -1,6 +1,5 @@
 package com.pharm.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;

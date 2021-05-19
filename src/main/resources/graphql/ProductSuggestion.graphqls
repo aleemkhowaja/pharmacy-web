@@ -1,13 +1,13 @@
-input ProductInput{
+input ProductSuggestionInput{
     lastName: String,
     barCode: String,
     barCode2: String,
-    category: String,
-    therapeuticClass: String,
-    pharmaceuticalForm: String,
+    category: CategoryInput,
+    therapeuticClass: TherapeuticClassInput,
+    pharmaceuticalForm: PharmaceuticalFormInput,
     dci: DCIInput,
     laboratory: String,
-    range1: String,
+    range1: RangeInput,
     subRange: String,
     productTable: String,
     requiresPrescription: String,
@@ -31,17 +31,17 @@ input ProductInput{
     monoGraph: String,
     description: String
 }
-type Product{
+type ProductSuggestion{
     id: ID!,
     lastName: String,
     barCode: String,
     barCode2: String,
-    category: String,
-    therapeuticClass: String,
-    pharmaceuticalForm: String,
+    category: Category,
+    therapeuticClass: TherapeuticClass,
+    pharmaceuticalForm: PharmaceuticalForm,
     dci: DCI,
     laboratory: String,
-    range1: String,
+    range1: Range,
     subRange: String,
     productTable: String,
     requiresPrescription: String,
@@ -67,11 +67,11 @@ type Product{
 
 }
 extend type Query{
-    getAllProducts:[Product]
-    ProductById(id: ID!):Product
+    getAllProductSuggestions(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: ProductSuggestionInput):[ProductSuggestion]
+    ProductSuggestionById(id: ID!):ProductSuggestion
 }
 extend type Mutation{
-    createProduct(input: ProductInput): Product
-    updateProduct(id: ID!, input: ProductInput): Product
-    deleteProduct(id: ID!): Product
+    createProductSuggestion(input: ProductSuggestionInput): ProductSuggestion
+    updateProductSuggestion(id: ID!, input: ProductSuggestionInput): ProductSuggestion
+    deleteProductSuggestion(id: ID!): ProductSuggestion
 }

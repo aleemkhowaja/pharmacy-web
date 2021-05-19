@@ -18,7 +18,7 @@ public class ManagerController implements GraphQLMutationResolver, GraphQLQueryR
     public List<Manager> getAllManagers(){
         return managerService.findAll();
     }
-    public Manager getManagerById(Integer id){
+    public Manager getManagerById(Long id){
         return managerService.findById(id);
     }
     public Manager createManager(Manager manager){

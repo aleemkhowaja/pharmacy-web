@@ -1,0 +1,34 @@
+input SupplierInput{
+    lastName: String,
+    email: String,
+    phone: String,
+    fax: String,
+    website: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: CountryInput,
+    description: String
+}
+type Supplier{
+    id: ID!,
+    lastName: String,
+    email: String,
+    phone: String,
+    fax: String,
+    website: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: Country,
+    description: String
+}
+type Query{
+    allSuppliers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: SupplierInput):[Supplier]
+    supplier(id: ID!):Supplier
+}
+type Mutation{
+    createSupplier(input: SupplierInput):Supplier
+    updateSupplier(id: ID!, input: SupplierInput):Supplier
+    deleteSupplier(id: ID!): Supplier
+}

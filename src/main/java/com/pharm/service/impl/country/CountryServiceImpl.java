@@ -22,7 +22,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country findById(Long id) {
-        Optional<Country> optional = countryRepository.findById(id.intValue());
+        Optional<Country> optional = countryRepository.findById(id);
         if(optional.isPresent()){
             return optional.get();
         }

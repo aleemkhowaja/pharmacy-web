@@ -7,9 +7,10 @@ import java.util.List;
 
 public interface ContactService {
 
-    List<Contact> findAll();
     Contact create(Contact contact) ;
     Contact delete(Contact contact);
     Contact update(Contact contact);
     Contact findById(Long id);
+
+    List<Contact> findAll(int pageNumber, int pageSize, String sortOrder, String sortBy, Contact filter);
 }

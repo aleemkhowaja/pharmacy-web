@@ -15,6 +15,7 @@ public class CustomerController implements GraphQLMutationResolver, GraphQLQuery
     @Autowired
     private CustomerService customerService;
 
+
     public List<Customer> getAllCustomers(
             final int pageNumber,
             final int pageSize,

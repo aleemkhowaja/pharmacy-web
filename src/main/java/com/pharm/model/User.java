@@ -2,9 +2,8 @@ package com.pharm.model;
 
 import lombok.*;
 import org.hibernate.annotations.Where;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 
 @Data
@@ -13,7 +12,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 @Where(clause="status='A'")
-public class User extends Common {
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -29,5 +33,8 @@ public class User extends Common {
 
 	@Column(name = "role")
 	private String role;
+
+	@Column(name = "status")
+	private String status;
 
 }

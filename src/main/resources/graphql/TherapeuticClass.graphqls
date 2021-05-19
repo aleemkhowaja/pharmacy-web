@@ -1,0 +1,10 @@
+input TherapeuticClassInput{
+    id: ID!
+}
+type TherapeuticClass{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllTherapeuticClasses: [TherapeuticClass]
+}

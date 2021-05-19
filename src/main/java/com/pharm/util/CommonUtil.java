@@ -2,7 +2,7 @@ package com.pharm.util;
 
 import com.pharm.model.Common;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 /**
  * 
@@ -23,8 +23,7 @@ public class CommonUtil
     public static void setSaveCreatedFieldValues(Common common, String status)
     {
 		common.setStatus(status);
-		common.setCreatedBy(1);
-		common.setCreatedData(new Date());
+		common.setCreatedDate(OffsetDateTime.now());
     }
     
     /**
@@ -35,8 +34,7 @@ public class CommonUtil
     public static void setSaveUpdatedFieldValues(Common common, String status)
     {
 		common.setStatus(status);
-		common.setModifiedBy(1);
-		common.setModifiedDate(new Date());
+		common.setModifiedDate(OffsetDateTime.now());
     }
     
 }

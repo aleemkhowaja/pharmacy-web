@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrganizationService {
     List<Organization> findAll();
-    Organization findById(Integer id);
+    Organization findById(Long id);
     Organization create(Organization organization);
     Organization update(Organization organization);
     Organization delete(Organization organization);

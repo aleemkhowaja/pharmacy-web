@@ -1,0 +1,10 @@
+input PharmaceuticalFormInput{
+    id: ID!
+}
+type PharmaceuticalForm{
+    id: ID!,
+    name: String
+}
+extend type Query{
+    getAllPharmaceuticalForms: [PharmaceuticalForm]
+}

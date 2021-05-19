@@ -10,11 +10,16 @@ import javax.persistence.*;
 @Where(clause = "status='A'")
 @Getter
 @Setter
+@Cacheable(false)
 public class Customer extends Common {
 
     @ManyToOne
     @JoinColumn(name = "manager")
     private Manager manager;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor")
+    private Doctor doctor;
 
     @Column(name = "first_name")
     private String firstName;

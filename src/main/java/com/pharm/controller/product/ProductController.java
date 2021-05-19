@@ -15,7 +15,13 @@ public class ProductController implements GraphQLMutationResolver, GraphQLQueryR
     @Autowired
     private ProductService productService;
 
-    public List<Product> getAllProducts() { return productService.findAll(); }
+    public List<Product> getAllProducts(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final Product filter
+    ) { return productService.findAll(pageNumber, pageSize, sortOrder, sortBy, filter); }
     public Product getProductById(Long id) { return productService.findById(id); }
     public Product createProduct(Product product) {
         product.setStatus("A");

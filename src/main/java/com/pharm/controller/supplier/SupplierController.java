@@ -14,8 +14,14 @@ public class SupplierController implements GraphQLQueryResolver, GraphQLMutation
     @Autowired
     private SupplierService supplierService;
 
-    public List<Supplier> getAllSuppliers(){
-        return supplierService.getAllSuppliers();
+    public List<Supplier> getAllSuppliers(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final Supplier filter
+    ){
+        return supplierService.getAllSuppliers(pageNumber, pageSize, sortOrder, sortBy, filter);
     }
 
     public Supplier getSupplier(Long id){

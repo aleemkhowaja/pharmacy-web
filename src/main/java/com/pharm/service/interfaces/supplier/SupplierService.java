@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SupplierService {
-
-    List<Supplier> getAllSuppliers();
+    
     Supplier getSupplierById(Long id);
 
     Supplier createSupplier(Supplier supplier);
@@ -17,4 +16,6 @@ public interface SupplierService {
     Supplier updateSupplier(Supplier supplier);
 
     Supplier deleteSupplier(Supplier supplier);
+
+    List<Supplier> getAllSuppliers(int pageNumber, int pageSize, String sortOrder, String sortBy, Supplier filter);
 }

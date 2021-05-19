@@ -15,7 +15,13 @@ public class ProductSuggestionController implements GraphQLMutationResolver, Gra
     @Autowired
     private ProductSuggestionService productSuggestionService;
 
-    public List<ProductSuggestion> getAllProductSuggestions() { return productSuggestionService.findAll(); }
+    public List<ProductSuggestion> getAllProductSuggestions(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final ProductSuggestion filter
+    ) { return productSuggestionService.findAll(pageNumber, pageSize, sortOrder, sortBy, filter); }
     public ProductSuggestion getProductSuggestionById(Long id) { return productSuggestionService.findById(id); }
     public ProductSuggestion createProductSuggestion(ProductSuggestion productSuggestion) {
         productSuggestion.setStatus("A");

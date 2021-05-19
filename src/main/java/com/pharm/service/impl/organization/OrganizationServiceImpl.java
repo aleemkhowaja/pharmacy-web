@@ -22,7 +22,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public Organization findById(Integer id) {
+    public Organization findById(Long id) {
         Optional<Organization> optional = organizationRepository.findById(id);
         if(optional.isPresent()){
             return optional.get();
@@ -39,7 +39,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public Organization update(Organization organization) {
         if(organization.getId()!=null){
-            Organization persisted = findById(organization.getId().intValue());
+            Organization persisted = findById(organization.getId());
             if (persisted==null){
                 return null;
             }
@@ -52,7 +52,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public Organization delete(Organization organization) {
         if (organization!=null && organization.getId()!=null){
-            Organization deleted = findById(organization.getId().intValue());
+            Organization deleted = findById(organization.getId());
             if (deleted!=null){
                 deleted.setStatus(CommonConstant.DELETE);
                 return organizationRepository.save(deleted);

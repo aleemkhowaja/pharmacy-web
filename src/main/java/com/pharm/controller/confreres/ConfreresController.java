@@ -14,10 +14,16 @@ public class ConfreresController implements GraphQLQueryResolver, GraphQLMutatio
     @Autowired
     private ConfreresService confreresService;
 
-    public List<Confreres> getAllConfreres(){
-        return confreresService.findAll();
+    public List<Confreres> getAllConfreres(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final Confreres filter
+    ){
+        return confreresService.findAll(pageNumber, pageSize, sortOrder, sortBy, filter);
     }
-    public Confreres getConfreresById(Integer id){
+    public Confreres getConfreresById(Long id){
         return confreresService.findById(id);
     }
     public Confreres createConfreres(Confreres confreres){

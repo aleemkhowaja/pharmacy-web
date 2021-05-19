@@ -27,7 +27,7 @@ type Confreres{
     manager: Manager
 }
 extend type Query{
-    getAllConfreres: [Confreres]
+    getAllConfreres(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: ConfreresInput): [Confreres]
     ConfreresById(id: ID!): Confreres
 }
 extend type Mutation{

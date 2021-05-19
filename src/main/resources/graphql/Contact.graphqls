@@ -1,6 +1,6 @@
 
 input ContactInput{
-    manager: String,
+    manager: ManagerInput,
     title: String,
     firstName: String,
     lastName: String,
@@ -16,7 +16,7 @@ input ContactInput{
 
 type Contact{
     id: ID!,
-    manager: String,
+    manager: Manager,
     title: String,
     firstName: String,
     lastName: String,
@@ -32,7 +32,7 @@ type Contact{
 
 
 extend type Query{
-    getAllContacts:[Contact]
+    getAllContacts(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: ContactInput):[Contact]
     ContactById(id:ID!): Contact
 }
 extend type Mutation{

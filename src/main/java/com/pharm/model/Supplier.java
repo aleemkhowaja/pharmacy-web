@@ -13,28 +13,26 @@ import javax.persistence.*;
 @Where(clause = "status='A'")
 public class Supplier extends Common {
 
-    @Column(name="supplier_last_name")
-    private String supplierLastName;
-    @Column(name="supplier_email")
-    private String supplierEmail;
-    @Column(name="supplier_phone")
-    private String supplierPhone;
-    @Column(name="supplier_fax")
-    private String supplierFax;
-    @Column(name="supplier_webstie")
-    private String supplierWebsite;
-    @Column(name="supplier_address")
-    private String supplierAddress;
-    @Column(name="supplier_city")
-    private String supplierCity;
-    @Column(name="supplier_postal_code")
-    private String supplierPostalCode;
-
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name="email")
+    private String email;
+    @Column(name="phone")
+    private String phone;
+    @Column(name="fax")
+    private String fax;
+    @Column(name="webstie")
+    private String website;
+    @Column(name="address")
+    private String address;
+    @Column(name="city")
+    private String city;
+    @Column(name="postal_code")
+    private String postalCode;
     @ManyToOne
-    @JoinColumn(name="supplier_country")
+    @JoinColumn(name="country")
     private Country country;
-
-    @Column(name="supplier_description")
-    private String supplierDescription;
+    @Column(name="description")
+    private String description;
 }
 

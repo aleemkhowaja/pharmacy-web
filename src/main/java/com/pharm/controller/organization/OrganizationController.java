@@ -17,7 +17,7 @@ public class OrganizationController implements GraphQLQueryResolver, GraphQLMuta
     public List<Organization> getAllOrganizations(){
         return organizationService.findAll();
     }
-    public  Organization getOrganizationById(Integer id){return organizationService.findById(id); }
+    public  Organization getOrganizationById(Long id){return organizationService.findById(id); }
     public Organization createOrganization(Organization organization){
         return organizationService.create(organization);
     }

@@ -28,14 +28,17 @@ public class Product extends Common {
     @Column(name = "bar_code2")
     private String barCode2;
 
-    @Column(name = "category")
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private Category category;
 
-    @Column(name = "therapeutic_class")
-    private String therapeuticClass;
+    @ManyToOne
+    @JoinColumn(name = "therapeutic_class")
+    private TherapeuticClass therapeuticClass;
 
-    @Column(name = "pharmaceutical_form")
-    private String pharmaceuticalForm;
+    @ManyToOne
+    @JoinColumn(name = "pharmaceutical_form")
+    private PharmaceuticalForm pharmaceuticalForm;
 
     @ManyToOne
     @JoinColumn(name = "dci")
@@ -44,8 +47,9 @@ public class Product extends Common {
     @Column(name = "laboratory")
     private String laboratory;
 
-    @Column(name = "range1")
-    private String range1;
+    @ManyToOne
+    @JoinColumn(name = "range1")
+    private Range range1;
 
     @Column(name = "sub_range")
     private String subRange;

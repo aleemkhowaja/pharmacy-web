@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DCIService {
     List<DCI> findAll();
-    DCI findById(Integer id);
+    DCI findById(Long id);
     DCI create(DCI dci);
     DCI update(DCI dci);
     DCI delete(DCI dci);

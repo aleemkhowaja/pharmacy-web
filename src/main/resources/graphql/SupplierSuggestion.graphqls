@@ -1,0 +1,34 @@
+input SupplierSuggestionInput{
+    lastName: String,
+    email: String,
+    phone: String,
+    fax: String,
+    website: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: CountryInput,
+    description: String
+}
+type SupplierSuggestion{
+    id: ID!,
+    lastName: String,
+    email: String,
+    phone: String,
+    fax: String,
+    website: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: Country,
+    description: String
+}
+extend type Query{
+    allSupplierSuggestions(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: SupplierSuggestionInput):[SupplierSuggestion]
+    supplierSuggestionById(id: ID):SupplierSuggestion
+}
+extend type Mutation{
+    createSupplierSuggestion(input: SupplierSuggestionInput):SupplierSuggestion
+    updateSupplierSuggestion(id:ID!, input: SupplierSuggestionInput):SupplierSuggestion
+    deleteSupplierSuggestion(id: ID): SupplierSuggestion
+}

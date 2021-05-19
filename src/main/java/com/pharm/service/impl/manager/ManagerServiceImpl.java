@@ -22,7 +22,7 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Manager findById(Integer id) {
+    public Manager findById(Long id) {
         Optional<Manager> optionalManager = managerRepository.findById(id);
         if(optionalManager.isPresent()){
             return optionalManager.get();
@@ -39,7 +39,7 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Manager update(Manager manager) {
         if (manager.getId()!=null){
-            Manager persisted = findById(manager.getId().intValue());
+            Manager persisted = findById(manager.getId());
             if(persisted==null) {
                 return null;
             }
@@ -53,7 +53,7 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Manager delete(Manager manager) {
         if (manager != null && manager.getId() != null) {
-            Manager deleted = findById(manager.getId().intValue());
+            Manager deleted = findById(manager.getId());
             if (deleted != null) {
                 deleted.setStatus(CommonConstant.DELETE);
                 return managerRepository.save(deleted);

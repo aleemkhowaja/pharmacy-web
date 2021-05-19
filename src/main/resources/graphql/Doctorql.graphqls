@@ -1,0 +1,22 @@
+input DoctorInput{
+    id: ID!
+}
+
+type Doctor{
+    id: ID!,
+    firstName: String,
+    lastName : String,
+    cin : String,
+    cnss : String,
+    email : String,
+    phone : String,
+    registerationNumber : String,
+    affiliateNumber : String,
+    address : String,
+    city : String,
+    postalCode : String,
+    description : String
+}
+extend type Query{
+    getAllDoctors: [Doctor]
+}

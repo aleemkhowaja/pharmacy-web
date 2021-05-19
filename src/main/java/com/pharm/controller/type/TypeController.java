@@ -17,7 +17,7 @@ public class TypeController implements GraphQLMutationResolver, GraphQLQueryReso
     public List<Type> getAllTypes(){
         return typeService.findAll();
     }
-    public Type getTypeById(Integer id){
+    public Type getTypeById(Long id){
         return typeService.findById(id);
     }
     public Type createType(Type type){

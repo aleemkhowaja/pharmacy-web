@@ -14,8 +14,14 @@ public class SupplierSuggestionController implements GraphQLQueryResolver, Graph
     @Autowired
     private SupplierSuggestionService supplierSuggestionService;
 
-    public List<SupplierSuggestion> getAllSupplierSuggestions(){
-        return supplierSuggestionService.getAllSupplierSuggestions();
+    public List<SupplierSuggestion> getAllSupplierSuggestions(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final SupplierSuggestion filter
+    ){
+        return supplierSuggestionService.getAllSupplierSuggestions(pageNumber, pageSize, sortOrder, sortBy, filter);
     }
 
     public SupplierSuggestion getSupplierSuggestionById(Long id){

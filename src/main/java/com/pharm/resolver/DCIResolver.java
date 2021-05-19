@@ -14,8 +14,8 @@ public class DCIResolver implements GraphQLResolver<DCI> {
     private DCIRepository dciRepository;
 
     public DCI getDCI(Product product){
-        return dciRepository.findById(product.getDci().getId().intValue()).orElseThrow(null);
+        return dciRepository.findById(product.getDci().getId()).orElseThrow(null);
     }
-    public DCI getDCI(ProductSuggestion productSuggestion){ return dciRepository.findById(productSuggestion.getDci().getId().intValue()).orElseThrow(null);
+    public DCI getDCI(ProductSuggestion productSuggestion){ return dciRepository.findById(productSuggestion.getDci().getId()).orElseThrow(null);
     }
 }

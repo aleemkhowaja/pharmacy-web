@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> findAll();
     Product create(Product product) ;
     Product delete(Product product);
     Product update(Product product);
     Product findById(Long id);
+
+    List<Product> findAll(int pageNumber, int pageSize, String sortOrder, String sortBy, Product filter);
 }

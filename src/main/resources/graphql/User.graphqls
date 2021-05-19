@@ -1,8 +1,12 @@
 type User {
         id: ID!
-        first_name: String
-        last_name: String
+        firstName: String
+        lastName: String
         role : String
+}
+
+input UserInput {
+        username: String
 }
 
 extend type Query{

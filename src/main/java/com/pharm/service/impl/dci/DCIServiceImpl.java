@@ -22,7 +22,7 @@ public class DCIServiceImpl implements DCIService {
     }
 
     @Override
-    public DCI findById(Integer id) {
+    public DCI findById(Long id) {
         Optional<DCI> optional = dciRepository.findById(id);
         if(optional.isPresent())
             return optional.get();
@@ -38,7 +38,7 @@ public class DCIServiceImpl implements DCIService {
     @Override
     public DCI update(DCI dci) {
         if(dci.getId()!=null){
-            DCI persisted = findById(dci.getId().intValue());
+            DCI persisted = findById(dci.getId());
             if(persisted==null){
                 return null;
             }
@@ -53,7 +53,7 @@ public class DCIServiceImpl implements DCIService {
     @Override
     public DCI delete(DCI dci) {
         if(dci!=null && dci.getId()!=null){
-            DCI deleted = findById(dci.getId().intValue());
+            DCI deleted = findById(dci.getId());
             if (deleted != null){
                 deleted.setStatus(CommonConstant.DELETE);
                 return dciRepository.save(deleted);

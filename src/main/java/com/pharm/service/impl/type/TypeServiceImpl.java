@@ -20,7 +20,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public Type findById(Integer id) {
+    public Type findById(Long id) {
         Optional<Type> optionalTypes = typeRepository.findById(id);
         if (optionalTypes.isPresent()){
             return optionalTypes.get();
@@ -37,7 +37,7 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type update(Type type) {
         if(type.getId()!=null){
-            Type persisted = findById(type.getId().intValue());
+            Type persisted = findById(type.getId());
             if (persisted==null){
                 return null;
             }
@@ -50,7 +50,7 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type delete(Type type) {
         if(type !=null && type.getId()!=null){
-            Type deleted = findById(type.getId().intValue());
+            Type deleted = findById(type.getId());
             if (deleted!=null){
                 deleted.setStatus(CommonConstant.DELETE);
                 return typeRepository.save(deleted);

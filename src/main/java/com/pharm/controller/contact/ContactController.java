@@ -15,8 +15,14 @@ public class ContactController implements GraphQLQueryResolver, GraphQLMutationR
     @Autowired
     private ContactService contactService;
 
-    public List<Contact> getAllContacts(){
-        return contactService.findAll();
+    public List<Contact> getAllContacts(
+            final int pageNumber,
+            final int pageSize,
+            final String sortOrder,
+            final String sortBy,
+            final Contact filter
+    ){
+        return contactService.findAll(pageNumber, pageSize, sortOrder, sortBy, filter);
     }
     public Contact getContactById(long id){
         return contactService.findById(id);
