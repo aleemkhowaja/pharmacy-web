@@ -1,4 +1,8 @@
+scalar  Date
+scalar  DateTime
+
 input SupplierInput{
+    id : ID,
     lastName: String,
     email: String,
     phone: String,
@@ -11,24 +15,29 @@ input SupplierInput{
     description: String
 }
 type Supplier{
-    id: ID!,
+    id: ID,
     lastName: String,
     email: String,
     phone: String,
     fax: String,
     website: String,
-    address: String,
     city: String,
     postalCode: String,
     country: Country,
-    description: String
+    description: String,
+    count : Int,
+    status : String,
+    createdBy : User,
+    createdDate : DateTime,
+    modifiedBy : User,
+    modifiedDate : DateTime
 }
 type Query{
-    allSuppliers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: SupplierInput):[Supplier]
+    getAllSuppliers(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: SupplierInput):[Supplier]
     supplier(id: ID!):Supplier
 }
 type Mutation{
-    createSupplier(input: SupplierInput):Supplier
+    save(input: SupplierInput):Supplier
     updateSupplier(id: ID!, input: SupplierInput):Supplier
     deleteSupplier(id: ID!): Supplier
 }

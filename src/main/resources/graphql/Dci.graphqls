@@ -1,8 +1,8 @@
 input DCIInput{
-    id: ID!
+    id: ID
 }
 type DCI{
-    id: ID!,
+    id: ID,
     name: String
 }
 extend type Query{

@@ -1,5 +1,5 @@
 input ProductInput{
-    lastName: String,
+    name: String,
     barCode: String,
     barCode2: String,
     category: CategoryInput,
@@ -33,7 +33,7 @@ input ProductInput{
 }
 type Product{
     id: ID!,
-    lastName: String,
+    name: String,
     barCode: String,
     barCode2: String,
     category: Category,
@@ -64,6 +64,12 @@ type Product{
     conditioning: String,
     monoGraph: String,
     description: String
+    count : Int,
+    status : String,
+    createdBy : User,
+    createdDate : DateTime,
+    modifiedBy : User,
+    modifiedDate : DateTime
 
 }
 extend type Query{

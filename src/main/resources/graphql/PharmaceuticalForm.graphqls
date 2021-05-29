@@ -1,5 +1,6 @@
 input PharmaceuticalFormInput{
     id: ID!
+    name: String
 }
 type PharmaceuticalForm{
     id: ID!,

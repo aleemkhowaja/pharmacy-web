@@ -14,13 +14,8 @@ import javax.persistence.*;
 @Where(clause = "status='A'")
 public class Product extends Common {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "bar_code")
     private String barCode;
@@ -29,7 +24,7 @@ public class Product extends Common {
     private String barCode2;
 
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
@@ -37,18 +32,18 @@ public class Product extends Common {
     private TherapeuticClass therapeuticClass;
 
     @ManyToOne
-    @JoinColumn(name = "pharmaceutical_form")
+    @JoinColumn(name = "pharm_form_id")
     private PharmaceuticalForm pharmaceuticalForm;
 
     @ManyToOne
-    @JoinColumn(name = "dci")
+    @JoinColumn(name = "dci_id")
     private DCI dci;
 
     @Column(name = "laboratory")
     private String laboratory;
 
     @ManyToOne
-    @JoinColumn(name = "range1")
+    @JoinColumn(name = "range_id")
     private Range range1;
 
     @Column(name = "sub_range")
@@ -64,16 +59,16 @@ public class Product extends Common {
     private String productMarket;
 
     @Column(name = "pph")
-    private String pph;
+    private Double pph;
 
     @Column(name = "ppv")
-    private String ppv;
+    private Double ppv;
 
     @Column(name = "vat_on_purchase")
-    private String vatOnPurchase;
+    private Double vatOnPurchase;
 
     @Column(name = "vat_on_sale")
-    private String vatOnSale;
+    private Double vatOnSale;
 
     @Column(name = "is_refundable")
     private String isRefundable;

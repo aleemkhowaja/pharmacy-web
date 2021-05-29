@@ -28,9 +28,10 @@ public class SupplierController implements GraphQLQueryResolver, GraphQLMutation
         return supplierService.getSupplierById(id);
     }
 
-    public Supplier createSupplier(Supplier supplier){
-        return supplierService.createSupplier(supplier);
+    public Supplier save(Supplier supplier){
+        return supplierService.save(supplier);
     }
+
     public Supplier updateSupplier(Long id, Supplier supplier) {
         supplier.setId(id);
         return supplierService.updateSupplier(supplier);

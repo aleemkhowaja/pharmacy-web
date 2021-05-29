@@ -18,6 +18,11 @@ public class Customer extends Common {
     private Manager manager;
 
     @ManyToOne
+    @JoinColumn(name = "pharmaceutical_form")
+    private PharmaceuticalForm pharmaceuticalForm;
+
+
+    @ManyToOne
     @JoinColumn(name = "doctor")
     private Doctor doctor;
 

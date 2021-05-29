@@ -22,11 +22,14 @@ public class ProductController implements GraphQLMutationResolver, GraphQLQueryR
             final String sortBy,
             final Product filter
     ) { return productService.findAll(pageNumber, pageSize, sortOrder, sortBy, filter); }
+
     public Product getProductById(Long id) { return productService.findById(id); }
+
     public Product createProduct(Product product) {
         product.setStatus("A");
         return productService.create(product);
     }
+
     public Product updateProduct(long id, Product product) {
         product.setId(id);
         return productService.update(product);
