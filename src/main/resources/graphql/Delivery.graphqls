@@ -1,0 +1,31 @@
+
+input DeliveryInput{
+    id: ID,
+    deliveryNoteDate: Date,
+    deliveryReference: String,
+    transactionNumber: String,
+    deadline: Date,
+    value : String,
+    manager : ManagerInput,
+#    provider: ProviderInput,
+    product: ProductInput,
+}
+type Delivery{
+    id: ID!,
+    total: Int,
+    deliveryNoteDate: Date,
+    transactionNumber: String,
+    deliveryReference: String,
+    deadline: Date,
+    value: String,
+    product: Product,
+#    provider: Provider,
+    manager: Manager,
+    createdDate: DateTime
+}
+extend type Query{
+    getAllDeliveries: [Delivery]
+}
+extend type Mutation{
+    createDelivery(input: DeliveryInput): Delivery
+}

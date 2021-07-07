@@ -10,13 +10,13 @@ input ProductSuggestionInput{
     range1: RangeInput,
     subRange: String,
     productTable: String,
-    requiresPrescription: String,
-    productMarket: String,
+    requiresPrescription: Boolean,
+    productMarket: Boolean,
     pph: String,
     ppv: String,
     vatOnPurchase: String,
     vatOnSale: String,
-    isRefundable: String,
+    isRefundable: Boolean,
     basisOfReimbursement: String,
     presentation: String,
     excipients: String,
@@ -29,7 +29,9 @@ input ProductSuggestionInput{
     productLabReference: String,
     conditioning: String,
     monoGraph: String,
-    description: String
+    description: String,
+    createdBy : UserInput,
+    modifiedBy : UserInput,
 }
 type ProductSuggestion{
     id: ID!,
@@ -63,7 +65,13 @@ type ProductSuggestion{
     productLabReference: String,
     conditioning: String,
     monoGraph: String,
-    description: String
+    description: String,
+    count : Int,
+    status : String,
+    createdBy : User,
+    createdDate : DateTime,
+    modifiedBy : User,
+    modifiedDate : DateTime
 
 }
 extend type Query{

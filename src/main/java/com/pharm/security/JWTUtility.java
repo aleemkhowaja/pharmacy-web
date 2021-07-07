@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Service
 public class JWTUtility {
 
-    private static String secret = "pharmacy";
+    private static String secret = "aleemkhowajapharmacy12121212121212121213213213213215454545454878787878787888878787875546546546546546546546546546546546546546546545454545465465787sdfsdfsdfsdfwerewtrwrtwrtsdsd54f5sd4f5sd4f5sd4f8sd78s7g8s7g8s7fg8s7g8sd7g8sd7gsgsd";
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     public static String extractUsername(String token) {

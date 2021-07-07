@@ -1,5 +1,5 @@
 input TherapeuticClassInput{
-    id: ID!
+    id: ID
 }
 type TherapeuticClass{
     id: ID!,

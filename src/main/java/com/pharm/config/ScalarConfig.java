@@ -17,4 +17,7 @@ public class ScalarConfig {
     public GraphQLScalarType dateTime(){
         return ExtendedScalars.DateTime;
     }
+
+    @Bean
+    public GraphQLScalarType bigDecimal() { return ExtendedScalars.GraphQLBigDecimal;}
 }

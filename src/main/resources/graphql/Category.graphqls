@@ -1,8 +1,8 @@
 input CategoryInput{
-    id: ID!
+    id: ID
 }
 type Category{
-    id: ID!,
+    id: ID,
     name: String
 }
 extend type Query{

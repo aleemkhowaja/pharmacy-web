@@ -1,0 +1,12 @@
+input TransactionDetailsInput {
+    id: ID,
+    transaction : TransactionInput,
+    product : ProductInput
+}
+
+type TransactionDetails {
+    id: ID,
+    transaction: Transaction,
+    product : Product,
+    quantity : Int
+}

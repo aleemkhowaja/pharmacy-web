@@ -1,8 +1,10 @@
 scalar  Date
 scalar  DateTime
+scalar  BigDecimal
 
 input CustomerInput
 {
+    id: ID,
     manager: ManagerInput,
     doctor : DoctorInput,
     firstName: String,

@@ -1,9 +1,12 @@
 package com.pharm.service.impl.product;
 
 import com.pharm.model.Product;
+import com.pharm.model.User;
 import com.pharm.repository.product.ProductRepository;
 import com.pharm.service.interfaces.product.ProductService;
+import com.pharm.service.interfaces.user.UserService;
 import com.pharm.util.CommonConstant;
+import com.pharm.util.CommonUtil;
 import com.pharm.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import static com.pharm.util.CommonConstant.ACTIVE;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Service
@@ -21,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    UserService userService;
 
     @Override
     @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW)
@@ -51,7 +58,25 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public Product create(Product product) {
-        product.setStatus(CommonConstant.ACTIVE);
+        if(product.getCategory()!=null && product.getCategory().getId()==null){
+            product.setCategory(null);
+        }
+        if(product.getDci()!=null && product.getDci().getId()==null){
+            product.setDci(null);
+        }
+        if(product.getPharmaceuticalForm()!=null && product.getPharmaceuticalForm().getId()==null){
+            product.setPharmaceuticalForm(null);
+        }
+        if(product.getTherapeuticClass()!=null && product.getTherapeuticClass().getId()==null){
+            product.setTherapeuticClass(null);
+        }
+        if(product.getRange1()!=null && product.getRange1().getId()==null){
+            product.setRange1(null);
+        }
+        final User user = userService.findByUsername(product.getCreatedBy().getUsername());
+        product.setCreatedBy(user);
+        product.setModifiedBy(null);
+        CommonUtil.setSaveCreatedFieldValues(product, ACTIVE);
         return productRepository.save(product);
     }
 
@@ -76,8 +101,27 @@ public class ProductServiceImpl implements ProductService {
             if (persisted == null) {
                 return null;
             }
-            product.setStatus(CommonConstant.ACTIVE);
+            product.setStatus(ACTIVE);
             Product updated = productRepository.save(product);
+            return updated;
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public Product updateSomeProperties(Product product) {
+        if (product.getId() != null) {
+            Product persisted = findById(product.getId());
+            if (persisted == null) {
+                return null;
+            }
+            product.setStatus(ACTIVE);
+            persisted.setPpv(product.getPpv());
+            persisted.setPph(product.getPph());
+            persisted.setMinStock(product.getMinStock());
+            persisted.setMaxStock(product.getMaxStock());
+            Product updated = productRepository.save(persisted);
             return updated;
         }
         return null;

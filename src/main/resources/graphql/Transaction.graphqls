@@ -1,0 +1,47 @@
+input TransactionInput {
+    id: ID,
+    paymentMethod : PaymentMethodInput,
+    customer: CustomerInput,
+    transactionNumber : String,
+    transDate: DateTime,
+    quantity: Int,
+    amount : BigDecimal,
+    transStatus: String,
+    reference: String,
+    isDelivered: Boolean,
+    type : String,
+    transactionDetails  : [TransactionDetailsInput],
+    createdBy : UserInput,
+    modifiedBy : UserInput
+}
+
+type Transaction{
+    id: ID,
+    customer: Customer,
+    transactionNumber : String,
+    transDate: DateTime,
+    quantity: Int,
+    amount : BigDecimal,
+    transStatus: String,
+    reference: String,
+    isDelivered: Boolean,
+    type : String,
+    status : String,
+    count : Int,
+    transactionDetails  : [TransactionDetails],
+    createdBy : User,
+    createdDate : DateTime,
+    modifiedBy : User,
+    modifiedDate : DateTime
+
+}
+extend type Query{
+    getAllTransaction(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: TransactionInput):[Transaction]
+    transactionById(id: ID!):Transaction
+}
+
+extend type Mutation {
+    createTransaction(input: TransactionInput): Transaction
+    updateTransaction(id: ID!, input: TransactionInput): Transaction
+    deleteTransaction(id: ID!): Transaction
+}

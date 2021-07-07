@@ -1,8 +1,10 @@
 package com.pharm.service.impl.productsuggestion;
 
 import com.pharm.model.ProductSuggestion;
+import com.pharm.model.User;
 import com.pharm.repository.productsuggestion.ProductSuggestionRepository;
 import com.pharm.service.interfaces.productsuggestion.ProductSuggestionService;
+import com.pharm.service.interfaces.user.UserService;
 import com.pharm.util.CommonConstant;
 import com.pharm.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static com.pharm.util.CommonConstant.DELETE;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Service
@@ -21,6 +22,9 @@ public class ProductSuggestionServiceImpl implements ProductSuggestionService {
 
     @Autowired
     private ProductSuggestionRepository productSuggestionRepository;
+
+    @Autowired
+    UserService userService;
 
     @Override
     @Transactional
@@ -47,6 +51,24 @@ public class ProductSuggestionServiceImpl implements ProductSuggestionService {
     @Override
     @Transactional
     public ProductSuggestion create(ProductSuggestion productSuggestion) {
+        if(productSuggestion.getCategory()!=null && productSuggestion.getCategory().getId()==null){
+            productSuggestion.setCategory(null);
+        }
+        if(productSuggestion.getDci()!=null && productSuggestion.getDci().getId()==null){
+            productSuggestion.setDci(null);
+        }
+        if(productSuggestion.getPharmaceuticalForm()!=null && productSuggestion.getPharmaceuticalForm().getId()==null){
+            productSuggestion.setPharmaceuticalForm(null);
+        }
+        if(productSuggestion.getTherapeuticClass()!=null && productSuggestion.getTherapeuticClass().getId()==null){
+            productSuggestion.setTherapeuticClass(null);
+        }
+        if(productSuggestion.getRange1()!=null && productSuggestion.getRange1().getId()==null){
+            productSuggestion.setRange1(null);
+        }
+        final User user = userService.findByUsername(productSuggestion.getCreatedBy().getUsername());
+        productSuggestion.setCreatedBy(user);
+        productSuggestion.setModifiedBy(null);
         productSuggestion.setStatus(CommonConstant.ACTIVE);
         return productSuggestionRepository.save(productSuggestion);
     }

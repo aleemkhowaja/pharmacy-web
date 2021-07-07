@@ -34,6 +34,12 @@ public class ProductController implements GraphQLMutationResolver, GraphQLQueryR
         product.setId(id);
         return productService.update(product);
     }
+
+    public Product updateProductWithSomeProperties(long id, Product product) {
+        product.setId(id);
+        return productService.updateSomeProperties(product);
+    }
+
     public Product deleteProduct(long id) {
         Product product = new Product();
         product.setId(id);

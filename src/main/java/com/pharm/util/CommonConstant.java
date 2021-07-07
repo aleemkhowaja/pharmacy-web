@@ -17,4 +17,7 @@ public class CommonConstant
     public static final String SORT_ASC = "ASC";
     public static final String SORT_DESC = "DSC";
 
+    public static final String SALE_TRAN = "FAC";
+    public static final String PURCHASE_TRAN = "BC";
+
 }

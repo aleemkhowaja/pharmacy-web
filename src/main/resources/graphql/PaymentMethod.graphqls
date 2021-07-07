@@ -1,0 +1,10 @@
+input PaymentMethodInput{
+    id: ID
+}
+type PaymentMethod{
+    id: ID,
+    name: String
+}
+extend type Query{
+
+}

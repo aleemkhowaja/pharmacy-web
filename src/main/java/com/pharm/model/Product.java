@@ -53,10 +53,10 @@ public class Product extends Common {
     private String productTable;
 
     @Column(name = "requires_prescription")
-    private String requiresPrescription;
+    private Boolean requiresPrescription;
 
     @Column(name = "product_market")
-    private String productMarket;
+    private Boolean productMarket;
 
     @Column(name = "pph")
     private Double pph;
@@ -71,7 +71,7 @@ public class Product extends Common {
     private Double vatOnSale;
 
     @Column(name = "is_refundable")
-    private String isRefundable;
+    private Boolean isRefundable;
 
     @Column(name = "basis_of_reimbursement")
     private String basisOfReimbursement;
@@ -112,7 +112,11 @@ public class Product extends Common {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "min_stock")
+    private Long minStock;
 
+    @Column(name = "max_stock")
+    private Long maxStock;
 
 
 }

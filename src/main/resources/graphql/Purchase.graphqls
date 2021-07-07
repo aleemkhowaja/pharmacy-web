@@ -1,0 +1,30 @@
+scalar  DateTime
+scalar Date
+
+input PurchaseInput{
+    product: ProductInput,
+    dateOfDelivery: Date,
+    deliveryReference: String,
+    transactionNumber: String,
+#    provider: ProviderInput
+}
+type Purchase{
+    id: ID!,
+    avail: String,
+    could: String,
+    total: Int,
+    quantity: Int,
+    dateOfDelivery: Date,
+    transactionNumber: String,
+    deliveryReference: String,
+    value: String,
+    product: Product,
+#    provider: Provider,
+    createdDate: DateTime
+}
+extend type Query{
+    getAllPurchases: [Purchase]
+}
+extend type Mutation{
+    createPurchase(input: PurchaseInput): Purchase
+}

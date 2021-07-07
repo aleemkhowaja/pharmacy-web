@@ -10,13 +10,11 @@ input ProductInput{
     range1: RangeInput,
     subRange: String,
     productTable: String,
-    requiresPrescription: String,
-    productMarket: String,
-    pph: String,
-    ppv: String,
+    requiresPrescription: Boolean,
+    productMarket: Boolean,
     vatOnPurchase: String,
     vatOnSale: String,
-    isRefundable: String,
+    isRefundable: Boolean,
     basisOfReimbursement: String,
     presentation: String,
     excipients: String,
@@ -29,8 +27,15 @@ input ProductInput{
     productLabReference: String,
     conditioning: String,
     monoGraph: String,
-    description: String
+    description: String,
+    pph: String,
+    ppv: String,
+    minStock : String,
+    maxStock : String,
+    createdBy : UserInput,
+    modifiedBy : UserInput,
 }
+
 type Product{
     id: ID!,
     name: String,
@@ -44,13 +49,13 @@ type Product{
     range1: Range,
     subRange: String,
     productTable: String,
-    requiresPrescription: String,
-    productMarket: String,
+    requiresPrescription: Boolean,
+    productMarket: Boolean,
     pph: String,
     ppv: String,
     vatOnPurchase: String,
     vatOnSale: String,
-    isRefundable: String,
+    isRefundable: Boolean,
     basisOfReimbursement: String,
     presentation: String,
     excipients: String,
@@ -65,19 +70,22 @@ type Product{
     monoGraph: String,
     description: String
     count : Int,
+    minStock : String,
+    maxStock : String,
     status : String,
     createdBy : User,
     createdDate : DateTime,
     modifiedBy : User,
     modifiedDate : DateTime
-
 }
 extend type Query{
     getAllProducts(pageNumber: Int!, pageSize : Int!, sortOrder: String!, sortBy: String!, filter: ProductInput):[Product]
     ProductById(id: ID!):Product
 }
-extend type Mutation{
+
+extend type Mutation {
     createProduct(input: ProductInput): Product
     updateProduct(id: ID!, input: ProductInput): Product
+    updateProductWithSomeProperties(id: ID!, input: ProductInput): Product
     deleteProduct(id: ID!): Product
 }
