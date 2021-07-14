@@ -48,9 +48,13 @@ public class TransactionImpl implements TransactionService {
         CommonUtil.setSaveCreatedFieldValues(transaction, ACTIVE);
 
         transactionRepository.save(transaction);
-
-        transaction.setTransactionNumber(SALE_TRAN+"-"+transaction.getId());
-        transactionRepository.save(transaction);
+        if(transaction.getType().equalsIgnoreCase("sale")) {
+            transaction.setTransactionNumber(SALE_TRAN + "-" + transaction.getId());
+            transactionRepository.save(transaction);
+        }else{
+            transaction.setTransactionNumber(PURCHASE_TRAN + "-" + transaction.getId());
+            transactionRepository.save(transaction);
+        }
         return transaction;
     }
 
